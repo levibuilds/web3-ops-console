@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Web3 Ops Console</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="mark">W3</div>
+          <div>
+            <h1>Ops Console</h1>
+            <p>Web3 运营操作台</p>
+          </div>
+        </div>
+        <nav>
+          <button class="nav-item active" data-view="overview">总览</button>
+          <button class="nav-item" data-view="web3news">Web3大事件</button>
+          <button class="nav-item" data-view="regulation">监管动态</button>
+          <button class="nav-item" data-view="unlocks">解锁日历</button>
+          <button class="nav-item" data-view="daily">运营日报</button>
+          <button class="nav-item" data-view="campaigns">活动库</button>
+          <button class="nav-item" data-view="watchlist">监控列表</button>
+          <button class="nav-item" data-view="exchanges">交易所活动</button>
+          <button class="nav-item" data-view="events">事件流</button>
+          <button class="nav-item" data-view="pipeline">处理链路</button>
+          <button class="nav-item" data-view="settings">设置</button>
+        </nav>
+        <div class="connector-list" id="connectors"></div>
+      </aside>
+
+      <main>
+        <section class="toolbar">
+          <div>
+            <h2 id="view-title">总览</h2>
+            <p id="view-subtitle">信号、评分和数据源状态。</p>
+            <p class="disclaimer" id="disclaimer">数据仅供研究，不构成投资建议。</p>
+          </div>
+          <div class="actions">
+            <form id="global-search-form" class="global-search">
+              <input id="global-search-input" type="search" placeholder="搜索运营记忆库" />
+              <button type="submit" class="secondary">搜索</button>
+            </form>
+            <span id="mode-badge" class="mode-badge">模拟数据模式</span>
+            <button id="refresh-btn" class="icon-btn" title="刷新">↻</button>
+            <button id="sync-btn">同步真实数据</button>
+            <button id="simulate-btn" class="secondary">生成模拟数据</button>
+          </div>
+        </section>
+        <section id="global-search-results" class="search-results hidden"></section>
+
+        <section class="view active" id="overview-view">
+          <div class="metrics" id="metrics"></div>
+          <div class="split">
+            <section class="panel">
+              <div class="panel-head">
+                <h3 id="alerts-heading">优先告警</h3>
+                <span id="alert-count"></span>
+              </div>
+              <div id="alerts" class="alert-list"></div>
+            </section>
+            <section class="panel">
+              <div class="panel-head">
+                <h3 id="signal-heading">信号分布</h3>
+              </div>
+              <div id="signal-mix" class="signal-mix"></div>
+              <div class="panel-section">
+                <div class="panel-head compact">
+                  <h3 id="whale-heading">巨鲸转账</h3>
+                </div>
+                <div id="whale-transfers" class="whale-list"></div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="view" id="web3news-view">
+          <section class="panel">
+            <div class="panel-head">
+              <h3 id="web3news-heading">今日 Web3 大事件</h3>
+              <button id="sync-news-btn">刷新大事件</button>
+            </div>
+            <div id="web3news-list" class="news-list"></div>
+          </section>
+        </section>
+
+        <section class="view" id="regulation-view">
+          <section class="panel">
+            <div class="panel-head">
+              <h3 id="regulation-heading">监管动态雷达</h3>
+              <select id="regulation-region-filter">
+                <option value="">全部地区</option>
+                <option value="US">美国</option>
+                <option value="HK">香港</option>
+                <option value="SG">新加坡</option>
+                <option value="EU">欧盟</option>
+                <option value="OTHER">其他</option>
+              </select>
+            </div>
+            <div id="regulation-list" class="news-list"></div>
+          </section>
+        </section>
+
+        <section class="view" id="unlocks-view">
+          <section class="panel">
+            <div class="panel-head">
+              <h3 id="unlocks-heading">解锁日历</h3>
+              <button id="sync-unlocks-btn">刷新解锁日历</button>
+            </div>
+            <div id="unlock-week" class="campaign-calendar"></div>
+            <div id="unlock-list" class="news-list"></div>
+          </section>
+        </section>
+
+        <section class="view" id="daily-view">
+          <section class="panel">
+            <div class="panel-head">
+              <h3 id="daily-heading">运营晨报</h3>
+              <div class="actions inline-actions">
+                <button id="generate-report-btn">生成晨报</button>
+                <button id="generate-weekly-btn" class="secondary">生成周报</button>
+                <button id="copy-report-btn" class="secondary">复制</button>
+              </div>
+            </div>
+            <pre id="daily-report-preview" class="report-preview"></pre>
+          </section>
+        </section>
+
+        <section class="view" id="campaigns-view">
+          <section class="panel">
+            <div class="panel-head">
+              <h3 id="campaigns-heading">活动情报库</h3>
+              <div class="filters">
+                <select id="campaign-exchange-filter"></select>
+                <select id="campaign-type-filter"></select>
+              </div>
+            </div>
+            <div id="campaign-calendar" class="campaign-calendar"></div>
+            <div class="table-wrap embedded">
+              <table>
+                <thead>
+                  <tr>
+                    <th id="campaign-th-exchange">交易所</th>
+                    <th id="campaign-th-type">类型</th>
+                    <th id="campaign-th-token">代币</th>
+                    <th id="campaign-th-time">时间</th>
+                    <th id="campaign-th-title">活动标题</th>
+                  </tr>
+                </thead>
+                <tbody id="campaign-table"></tbody>
+              </table>
+            </div>
+            <div id="campaign-frequency" class="frequency-card compact-frequency"></div>
+          </section>
+        </section>
+
+        <section class="view" id="watchlist-view">
+          <div id="monitor-status" class="monitor-status"></div>
+          <form id="watchlist-form" class="editor">
+            <label>
+              <span id="assets-label">资产</span>
+              <textarea id="assets-input" rows="3"></textarea>
+            </label>
+            <label>
+              <span id="protocols-label">协议</span>
+              <textarea id="protocols-input" rows="3"></textarea>
+            </label>
+            <label>
+              <span id="keywords-label">关键词</span>
+              <textarea id="keywords-input" rows="3"></textarea>
+            </label>
+            <label class="wide">
+              <span id="wallets-label">钱包</span>
+              <textarea id="wallets-input" rows="7"></textarea>
+            </label>
+            <label class="wide">
+              <span id="kols-label">X 币圈意见领袖</span>
+              <textarea id="kols-input" rows="4"></textarea>
+            </label>
+            <label class="wide">
+              <span id="brands-label">品牌词</span>
+              <textarea id="brands-input" rows="3"></textarea>
+            </label>
+            <button id="save-watchlist-btn" type="submit">保存监控列表</button>
+          </form>
+        </section>
+
+        <section class="view" id="exchanges-view">
+          <div class="exchange-toolbar">
+            <div class="source-tabs" id="exchange-filters"></div>
+            <button id="sync-exchanges-btn">刷新交易所公告</button>
+          </div>
+          <section class="panel listing-race-panel">
+            <div class="panel-head">
+              <h3 id="listing-race-heading">上币竞速表</h3>
+            </div>
+            <div class="table-wrap embedded">
+              <table>
+                <thead id="listing-race-head"></thead>
+                <tbody id="listing-race-table"></tbody>
+              </table>
+            </div>
+          </section>
+          <div class="exchange-grid" id="exchange-announcements"></div>
+        </section>
+
+        <section class="view" id="events-view">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th id="th-time">时间</th>
+                  <th id="th-type">类型</th>
+                  <th id="th-asset">资产</th>
+                  <th id="th-value">规模</th>
+                  <th id="th-path">路径</th>
+                  <th id="th-source">来源</th>
+                </tr>
+              </thead>
+              <tbody id="events-table"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="view" id="pipeline-view">
+          <div class="pipeline">
+            <div id="pipe-ingest">采集</div>
+            <div id="pipe-normalize">标准化</div>
+            <div id="pipe-enrich">补全</div>
+            <div id="pipe-score">评分</div>
+            <div id="pipe-analyze">研判</div>
+            <div id="pipe-deliver">推送</div>
+          </div>
+          <section class="panel">
+            <div class="panel-head">
+              <h3 id="manual-heading">手动写入事件</h3>
+            </div>
+            <form id="manual-form" class="manual-form">
+              <textarea id="manual-json" rows="12"></textarea>
+              <button id="manual-submit-btn" type="submit">写入事件数据</button>
+            </form>
+          </section>
+        </section>
+
+        <section class="view" id="settings-view">
+          <section class="panel">
+            <div class="panel-head">
+              <h3 id="settings-heading">设置</h3>
+            </div>
+            <form id="settings-form" class="editor">
+              <label>
+                <span>我的交易所</span>
+                <select id="my-exchange-select"></select>
+              </label>
+              <button type="submit">保存设置</button>
+            </form>
+          </section>
+        </section>
+      </main>
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>

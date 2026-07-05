@@ -1,0 +1,31 @@
+{
+  "name": "web3-ops-console",
+  "version": "0.1.0",
+  "description": "AI-powered operations console for Web3/exchange ops teams: competitor intel, regulatory radar, AI daily briefings and campaign library.",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/levi2277999-gif/web3-ops-console.git"
+  },
+  "keywords": [
+    "web3",
+    "crypto-exchange",
+    "operations",
+    "ai",
+    "dashboard",
+    "sqlite",
+    "nodejs"
+  ],
+  "scripts": {
+    "dev": "node src/server.mjs",
+    "start": "NODE_ENV=production node src/server.mjs",
+    "check": "node --check src/server.mjs && node --check public/app.js && node --check src/core.mjs",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.10.0"
+  }
+}

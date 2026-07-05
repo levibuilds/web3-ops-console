@@ -1,0 +1,51 @@
+{
+  "categories": [
+    {
+      "id": "listing",
+      "zh": "新币上线",
+      "en": "New Listings",
+      "keywords": ["list", "listing", "launch", "spot trading", "futures trading", "上线", "上新", "開啟", "开启", "現貨", "现货", "合约交易", "交易对"]
+    },
+    {
+      "id": "campaign",
+      "zh": "活动",
+      "en": "Campaigns",
+      "keywords": ["reward", "campaign", "tournament", "competition", "airdrop", "launchpool", "earn", "voucher", "giveaway", "活动", "奖励", "瓜分", "空投", "交易赛", "锦标赛", "理财", "赚币", "新手"]
+    },
+    {
+      "id": "contract_fee",
+      "zh": "合约与费率变更",
+      "en": "Contracts & Fees",
+      "keywords": ["fee", "funding", "margin", "leverage", "perpetual", "contract", "费率", "手续费", "资金费", "杠杆", "保证金", "永续", "合约"]
+    },
+    {
+      "id": "maintenance",
+      "zh": "维护",
+      "en": "Maintenance",
+      "keywords": ["maintenance", "upgrade", "suspend", "resume", "network", "维护", "升级", "暂停", "恢复", "网络"]
+    },
+    {
+      "id": "delisting",
+      "zh": "下架",
+      "en": "Delisting",
+      "keywords": ["delist", "remove", "cease", "下架", "移除", "停止"]
+    },
+    {
+      "id": "regulation",
+      "zh": "监管动态",
+      "en": "Regulation",
+      "keywords": ["sec", "sfc", "mas", "fca", "mifid", "mica", "license", "compliance", "ban", "lawsuit", "fine", "penalty", "regulation", "regulatory", "监管", "牌照", "合规", "禁令", "诉讼", "罚款", "处罚"]
+    }
+  ],
+  "campaignTypes": [
+    { "id": "trading_competition", "zh": "交易赛", "en": "Trading Competition", "keywords": ["trading competition", "tournament", "challenge", "交易赛", "交易竞赛", "锦标赛", "挑战赛"] },
+    { "id": "deposit_campaign", "zh": "充值赛", "en": "Deposit Campaign", "keywords": ["deposit", "充值"] },
+    { "id": "launchpool", "zh": "Launchpool", "en": "Launchpool", "keywords": ["launchpool", "launch pool"] },
+    { "id": "learn_earn", "zh": "学习赚币", "en": "Learn & Earn", "keywords": ["learn", "quiz", "学习", "答题"] },
+    { "id": "new_user", "zh": "新手任务", "en": "New User Tasks", "keywords": ["new user", "newbie", "新手", "新用户"] },
+    { "id": "earn", "zh": "理财增币", "en": "Earn / Yield", "keywords": ["earn", "staking", "apr", "apy", "yield", "理财", "赚币", "质押", "年化", "增币"] },
+    { "id": "airdrop_reward", "zh": "空投奖励", "en": "Airdrop / Rewards", "keywords": ["airdrop", "reward", "bonus", "voucher", "giveaway", "空投", "奖励", "福利", "代金券"] },
+    { "id": "fee_rebate", "zh": "手续费返佣", "en": "Fee Rebate", "keywords": ["fee", "rebate", "cashback", "手续费", "返佣", "返现"] },
+    { "id": "futures_campaign", "zh": "合约活动", "en": "Futures Campaign", "keywords": ["futures", "contract", "perpetual", "合约", "永续"] }
+  ]
+}
