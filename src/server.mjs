@@ -9,7 +9,12 @@ import Database from "better-sqlite3";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
 const publicDir = path.join(rootDir, "public");
-const dataDir = path.join(rootDir, "data");
+const demoMode = process.env.DEMO_MODE === "1";
+const snapshotMode = process.env.SNAPSHOT_MODE === "1";
+const trustedSourcesOnly = process.env.TRUSTED_SOURCES_ONLY === "1";
+const productionSnapshot = snapshotMode ? JSON.parse(readFileSync(path.join(publicDir, "production-snapshot.json"), "utf8")) : null;
+const dataDir = path.resolve(process.env.DATA_DIR || path.join(rootDir, demoMode ? "data-demo" : "data"));
+if (demoMode && dataDir === path.join(rootDir, "data")) throw new Error("Demo data must use a separate directory");
 const statePath = path.join(dataDir, "state.json");
 const dbPath = path.join(dataDir, "app.db");
 const envPath = path.join(rootDir, ".env");
@@ -26,6 +31,7 @@ const contentTypes = {
 await loadEnv();
 
 const port = Number(process.env.PORT || 4173);
+const host = process.env.HOST || "127.0.0.1";
 
 const defaultState = {
   watchlist: {
@@ -231,8 +237,8 @@ const exchangeSources = [
 
 const announcementRules = loadAnnouncementRules();
 
-await mkdir(dataDir, { recursive: true });
-const db = new Database(dbPath);
+if (!snapshotMode) await mkdir(dataDir, { recursive: true });
+const db = new Database(snapshotMode ? ":memory:" : dbPath);
 db.pragma("journal_mode = WAL");
 initDatabase();
 
@@ -241,7 +247,7 @@ const ingestRateLimit = new Map();
 let aiWindowStart = Date.now();
 let aiCallsThisHour = 0;
 
-let state = await loadState();
+let state = snapshotMode ? structuredClone(defaultState) : await loadState();
 loadPersistentState();
 
 function initDatabase() {
@@ -849,7 +855,7 @@ async function syncExchangeAnnouncements() {
     fetchBybitActivities(language),
     fetchBitgetAnnouncements(language),
     ...exchangeSources
-      .filter((source) => !["binance", "okx", "bybit", "bitget"].includes(source.id))
+      .filter((source) => !trustedSourcesOnly && !["binance", "okx", "bybit", "bitget"].includes(source.id))
       .map((source) => fetchGenericExchangeAnnouncements(source, language))
   ]);
   const announcements = results.flatMap((result) => (result.status === "fulfilled" ? result.value : []));
@@ -873,6 +879,7 @@ async function syncExchangeAnnouncements() {
   }
 
   for (const source of exchangeSources) {
+    if (trustedSourcesOnly && !["binance", "okx", "bybit", "bitget"].includes(source.id)) continue;
     const count = announcements.filter((item) => item.exchangeId === source.id).length;
     if (!state.connectorHealth[source.id]) {
       connectorOk(source.id, {
@@ -1139,6 +1146,7 @@ function announcementLineScore(line) {
 }
 
 async function fetchWithRetry(url, options = {}, control = {}) {
+  if (demoMode) throw new Error("demo_external_fetch_disabled");
   const retries = control.retries ?? 2;
   const timeoutMs = control.timeoutMs || options.timeoutMs || 10000;
   let lastError;
@@ -2122,9 +2130,10 @@ async function getAssetPrice(asset) {
 }
 
 async function dailyReport(language = currentLanguage()) {
-  await syncCoinGecko();
+  if (!demoMode && !snapshotMode) await syncCoinGecko();
   const btc = market.BTC || {};
   const eth = market.ETH || {};
+  const priceLabel = (value) => demoMode ? `${currency(value)}（演示参考值）` : state.connectorHealth.coingecko?.ok === true ? currency(value) : "未验证";
   const isEn = language === "en";
   const since = Date.now() - 24 * 60 * 60 * 1000;
   const recentAnnouncements = localizedExchangeAnnouncements(language).filter((item) => new Date(item.publishedAt || 0).getTime() >= since);
@@ -2161,11 +2170,13 @@ async function dailyReport(language = currentLanguage()) {
     .map((item) => `- ${item.project} ${item.symbol || ""}: ${new Date(item.unlockDate).toLocaleDateString("zh-CN")} 解锁约 ${currency(item.valueUsd || 0)}。`)
     .join("\n") || "- 暂无未来30天大额解锁数据。";
   let report = isEn
-    ? `# Web3 Ops Daily Brief\n\nGenerated at: ${new Date().toLocaleString("en-US")}\n\n## 1. Market Overview\n\n- BTC: ${currency(btc.price || 0)}\n- ETH: ${currency(eth.price || 0)}\n\n## 2. Key Exchange Updates\n\n${important}\n\n${categories}\n\n## 3. Large On-chain Moves\n\n${whaleBlock}\n\n## 4. Watchlist for Today\n\n- Prioritize listing and campaign changes across major exchanges, then prepare content, activity, and support talking points.\n- Manually verify announcements that match subscribed keywords before publishing.\n- Data is for operations research only and does not constitute investment advice.\n`
-    : `# Web3 Ops 运营晨报\n\n生成时间：${new Date().toLocaleString("zh-CN")}\n\n## ① 市场概况\n\n- BTC: ${currency(btc.price || 0)}\n- ETH: ${currency(eth.price || 0)}\n\n## ② 高危监管动态\n\n${criticalRegulations}\n\n## ③ 20所重点动态\n\n${important}\n\n${categories}\n\n## ④ 对标提醒\n\n${benchmarkBlock}\n\n## ⑤ 大额链上异动\n\n${whaleBlock}\n\n## ⑥ 解锁日历关注\n\n${unlockBlock}\n\n## ⑦ 今日关注建议\n\n- 优先跟进20所新币上线与活动节奏，确认自家是否需要同步内容、活动或客服话术。\n- 对命中关键词和监管高危词的公告做二次人工核验，避免误读活动规则。\n- 数据仅供运营研究，不构成投资建议。\n`;
-  const usedAi = Boolean(process.env.OPENAI_API_KEY);
-  if (usedAi) {
-    report = await polishDailyReport(report, language);
+    ? `# Web3 Ops Daily Brief\n\nGenerated at: ${new Date().toLocaleString("en-US")}\n\n## 1. Market Overview\n\n- BTC: ${priceLabel(btc.price)}\n- ETH: ${priceLabel(eth.price)}\n\n## 2. Key Exchange Updates\n\n${important}\n\n${categories}\n\n## 3. Large On-chain Moves\n\n${whaleBlock}\n\n## 4. Watchlist for Today\n\n- Prioritize listing and campaign changes across major exchanges, then prepare content, activity, and support talking points.\n- Manually verify announcements that match subscribed keywords before publishing.\n- Data is for operations research only and does not constitute investment advice.\n`
+    : `# Web3 Ops 运营晨报\n\n生成时间：${new Date().toLocaleString("zh-CN")}\n\n## ① 市场概况\n\n- BTC: ${priceLabel(btc.price)}\n- ETH: ${priceLabel(eth.price)}\n\n## ② 高危监管动态\n\n${criticalRegulations}\n\n## ③ 20所重点动态\n\n${important}\n\n${categories}\n\n## ④ 对标提醒\n\n${benchmarkBlock}\n\n## ⑤ 大额链上异动\n\n${whaleBlock}\n\n## ⑥ 解锁日历关注\n\n${unlockBlock}\n\n## ⑦ 今日关注建议\n\n- 优先跟进20所新币上线与活动节奏，确认自家是否需要同步内容、活动或客服话术。\n- 对命中关键词和监管高危词的公告做二次人工核验，避免误读活动规则。\n- 数据仅供运营研究，不构成投资建议。\n`;
+  let usedAi = false;
+  if (!demoMode && process.env.OPENAI_API_KEY) {
+    const polished = await polishDailyReport(report, language);
+    report = polished.report;
+    usedAi = polished.usedAi;
   }
   return { report, generatedAt: nowIso(), language, usedAi };
 }
@@ -2196,7 +2207,7 @@ async function weeklyReport(language = currentLanguage()) {
 }
 
 async function polishDailyReport(markdown, language) {
-  if (!rateLimit({ socket: { remoteAddress: "daily-report" } }, "daily-report", 5, 60 * 60 * 1000)) return markdown;
+  if (!rateLimit({ socket: { remoteAddress: "daily-report" } }, "daily-report", 5, 60 * 60 * 1000)) return { report: markdown, usedAi: false };
   try {
     const response = await fetchWithRetry("https://api.openai.com/v1/responses", {
       method: "POST",
@@ -2217,10 +2228,11 @@ async function polishDailyReport(markdown, language) {
       state.metrics.aiInputTokens += Number(data.usage.input_tokens || 0);
       state.metrics.aiOutputTokens += Number(data.usage.output_tokens || 0);
     }
-    return extractResponseText(data) || markdown;
+    const polished = extractResponseText(data);
+    return { report: polished || markdown, usedAi: Boolean(polished) };
   } catch (error) {
     connectorFail("dailyReport", error);
-    return markdown;
+    return { report: markdown, usedAi: false };
   }
 }
 
@@ -2517,6 +2529,7 @@ function reasonsFor(event, language = currentLanguage()) {
 }
 
 async function deliverAlert(alert) {
+  if (demoMode) return;
   const message = `[${severityLabel(alert.severity)}] ${alert.title}\n${alert.summary}`;
   const route = alert.event?.type === "announcement_keyword" || alert.event?.type === "listing" ? "listing" : alert.event?.sentiment === "negative" ? "sentiment" : "default";
   const targets = [sendTelegram(message, route), sendDiscord(alert, message)];
@@ -2525,6 +2538,7 @@ async function deliverAlert(alert) {
 }
 
 async function attachAiAnalysis(alert) {
+  if (demoMode) return;
   if (!process.env.OPENAI_API_KEY || !["high", "critical"].includes(alert.severity)) return;
   const now = Date.now();
   if (now - aiWindowStart >= 60 * 60 * 1000) {
@@ -2646,6 +2660,7 @@ async function sendDiscord(alert, message) {
 }
 
 async function pushDailyReport(message) {
+  if (demoMode) return;
   await Promise.allSettled([sendTelegram(message, "daily"), sendFeishu(message, "daily"), sendWecom(message, "daily")]);
 }
 
@@ -2732,7 +2747,8 @@ async function loadDemoScenario() {
     valueUsd,
     percentOfSupply,
     isLarge: valueUsd >= 10_000_000 || percentOfSupply >= 1,
-    url: `https://defillama.com/unlocks/${slug}`
+    url: "",
+    isDemo: true
   }));
   const unlockIds = new Set(unlocks.map((item) => item.id));
   state.unlockEvents = [...unlocks, ...(state.unlockEvents || []).filter((item) => !unlockIds.has(item.id))]
@@ -2771,7 +2787,7 @@ function demoAnnouncement(exchangeId, title, opsCategoryId, publishedAt, tokens 
     activityScore: opsCategoryId === "campaign" ? 92 : 82,
     publishedAt,
     fetchedAt: nowIso(),
-    url: `https://demo.local/${exchangeId}/${tokens[0] || "ops"}-${opsCategoryId}`
+    url: ""
   };
 }
 
@@ -2872,6 +2888,42 @@ function randomWallet() {
 
 async function handleApi(req, res, pathname) {
   const requestUrl = new URL(req.url || "/", `http://${req.headers.host || "localhost"}`);
+  if (snapshotMode && (req.method !== "GET" || requestUrl.searchParams.has("push"))) {
+    return json(res, 403, { error: "snapshot_read_only" });
+  }
+  if (snapshotMode && pathname === "/api/search") {
+    const q = String(requestUrl.searchParams.get("q") || "").trim().toLowerCase();
+    const rows = (items, kind) => items.filter((item) => !q || `${item.title} ${item.originalTitle || ""} ${item.exchange || item.source || ""}`.toLowerCase().includes(q))
+      .slice(0, 50).map((item) => ({ kind, title: item.title, source: item.exchange || item.source, url: item.url, observedAt: item.publishedAt || item.observedAt, summary: item.opsCategory ? `规则分类：${item.opsCategory}。请打开原文核验。` : "" }));
+    return json(res, 200, { q, groups: {
+      announcements: rows(productionSnapshot.state.exchangeAnnouncements, "announcements"),
+      campaigns: rows(productionSnapshot.state.campaigns, "campaigns"),
+      events: rows(productionSnapshot.state.events, "events")
+    } });
+  }
+  if (snapshotMode && pathname === "/api/daily-report") return json(res, 200, productionSnapshot.report);
+  if (snapshotMode && pathname === "/api/weekly-report") return json(res, 501, { error: "snapshot_weekly_report_unavailable" });
+  if (snapshotMode) {
+    const snapshotData = productionSnapshot.state;
+    if (pathname === "/api/state") return json(res, 200, snapshotData);
+    const reads = {
+      "/api/health": { ok: true, snapshotAt: snapshotData.snapshotAt, metrics: snapshotData.metrics },
+      "/api/events": { events: snapshotData.events },
+      "/api/web3-news": { news: snapshotData.web3News },
+      "/api/regulation": { items: snapshotData.regulationItems },
+      "/api/unlocks": { unlocks: snapshotData.unlockEvents },
+      "/api/alerts": { alerts: snapshotData.alerts },
+      "/api/exchange-announcements": { announcements: snapshotData.exchangeAnnouncements },
+      "/api/listing-race": { listings: snapshotData.listingRace },
+      "/api/campaigns": { campaigns: snapshotData.campaigns },
+      "/api/watchlist": { watchlist: snapshotData.watchlist }
+    };
+    if (Object.hasOwn(reads, pathname)) return json(res, 200, reads[pathname]);
+    return json(res, 404, { error: "snapshot_route_unavailable" });
+  }
+  if (demoMode && req.method === "POST" && ["/api/sync", "/api/sync-web3-news", "/api/sync-unlocks", "/api/sync-exchanges", "/api/webhooks/alchemy", "/api/webhooks/moralis"].includes(pathname)) {
+    return json(res, 403, { error: "demo_external_sync_disabled" });
+  }
   if (req.method === "GET" && pathname === "/api/health") {
     return json(res, 200, { ok: true, metrics: state.metrics, uptime: process.uptime() });
   }
@@ -3026,6 +3078,7 @@ async function handleApi(req, res, pathname) {
   }
 
   if (req.method === "POST" && pathname === "/api/simulate") {
+    if (!demoMode) return json(res, 403, { error: "demo_mode_required" });
     const results = await simulateBatch();
     return json(res, 201, { results, state: publicState() });
   }
@@ -3214,6 +3267,7 @@ function listingRace(language = currentLanguage()) {
     .flatMap((item) =>
       item.tokens.map((token) => ({
         token,
+        marketType: /合约|perpetual|futures/i.test(item.title) ? "合约" : /现货|spot/i.test(item.title) ? "现货" : "市场未注明",
         exchange: item.exchange,
         exchangeId: item.exchangeId,
         publishedAt: item.publishedAt,
@@ -3223,25 +3277,26 @@ function listingRace(language = currentLanguage()) {
     );
   const grouped = new Map();
   for (const item of listings) {
-    if (!grouped.has(item.token)) grouped.set(item.token, []);
-    grouped.get(item.token).push(item);
+    const key = `${item.token}:${item.marketType}`;
+    if (!grouped.has(key)) grouped.set(key, []);
+    grouped.get(key).push(item);
   }
   const now = Date.now();
   return [...grouped.entries()]
-    .map(([token, rows]) => {
+    .map(([, rows]) => {
       const sorted = rows.sort((a, b) => new Date(a.publishedAt) - new Date(b.publishedAt));
       const firstAt = sorted[0]?.publishedAt || "";
       const mine = sorted.find((row) => row.exchangeId === benchmarkId);
       const lagDays = mine?.publishedAt && firstAt ? (new Date(mine.publishedAt).getTime() - new Date(firstAt).getTime()) / (24 * 60 * 60 * 1000) : null;
       return {
-        token,
+        token: `${rows[0].token} · ${rows[0].marketType}`,
         firstExchange: sorted[0]?.exchange || "",
         firstAt,
         myExchange: exchangeName(benchmarkId),
         myExchangeId: benchmarkId,
         myPublishedAt: mine?.publishedAt || "",
         lagDays,
-        lagLabel: lagDays == null ? "未跟进" : lagDays <= 0 ? "领先/同步" : `落后 ${lagDays.toFixed(1)} 天`,
+        lagLabel: lagDays == null ? "未采集到公告" : lagDays <= 0 ? "公告领先/同步" : `公告晚 ${lagDays.toFixed(1)} 天`,
         isNew24h: sorted.some((row) => now - new Date(row.publishedAt).getTime() <= 24 * 60 * 60 * 1000),
         exchanges: exchangeSources.map((source) => {
           const hit = sorted.find((row) => row.exchangeId === source.id);
@@ -3353,7 +3408,7 @@ function regulationItems(language = currentLanguage()) {
       return true;
     })
     .sort((a, b) => new Date(b.observedAt || 0) - new Date(a.observedAt || 0));
-  if (rows.length >= 8) return rows;
+  if (!demoMode || rows.length >= 8) return rows;
   const existing = new Set(rows.map((item) => item.id));
   return [
     ...rows,
@@ -3384,8 +3439,8 @@ function defaultRegulationItems() {
 }
 
 function unlockEventsForDisplay() {
-  const rows = (state.unlockEvents || []).slice();
-  if (rows.length >= 8) return rows.sort((a, b) => new Date(a.unlockDate) - new Date(b.unlockDate));
+  const rows = (state.unlockEvents || []).map((item) => item.isDemo || String(item.id || "").startsWith("demo:") ? { ...item, url: "", isDemo: true } : item);
+  if (!demoMode || rows.length >= 8) return rows.sort((a, b) => new Date(a.unlockDate) - new Date(b.unlockDate));
   const existing = new Set(rows.map((item) => item.id));
   return [
     ...rows,
@@ -3417,7 +3472,7 @@ function defaultUnlockEvents() {
     valueUsd,
     percentOfSupply,
     isLarge: valueUsd >= 10_000_000 || percentOfSupply >= 1,
-    url: `https://defillama.com/unlocks/${slug}`,
+    url: "",
     isDemo: true
   }));
 }
@@ -3589,11 +3644,15 @@ function localizeConnectorMessage(message, language = currentLanguage()) {
 }
 
 function publicState() {
+  if (snapshotMode) return productionSnapshot.state;
   const language = currentLanguage();
+  const snapshotAt = Object.values(state.connectorHealth).map((item) => item.checkedAt).filter(Boolean).sort().at(-1) || state.metrics.lastLiveSyncAt;
   return {
+    dataMode: demoMode ? "demo" : snapshotMode ? "snapshot" : state.exchangeAnnouncements.some((item) => String(item.id || "").startsWith("demo:")) ? "mixed" : state.exchangeAnnouncements.length || state.normalizedEvents.length ? "live" : "empty",
+    snapshotAt,
     settings: { ...state.settings, language: "zh" },
     capabilities: {
-      aiContent: Boolean(process.env.OPENAI_API_KEY)
+      aiContent: !demoMode && Boolean(process.env.OPENAI_API_KEY)
     },
     watchlist: localizeWatchlistRecord(state.watchlist, language),
     metrics: state.metrics,
@@ -3624,7 +3683,7 @@ function publicState() {
       const health = state.connectorHealth[key] || {};
       return {
         ...connector,
-        status: health.ok === false ? "error" : connector.status,
+        status: health.ok === true ? "ready" : health.ok === false ? "error" : "unverified",
         message: localizeConnectorMessage(health.message || "", language),
         checkedAt: health.checkedAt || "",
         docs: connectorDocs[key] || ""
@@ -3634,7 +3693,7 @@ function publicState() {
       const health = state.connectorHealth[source.id] || {};
       return {
         ...source,
-        status: health.ok === false ? "error" : "ready",
+        status: health.ok === true ? "ready" : health.ok === false ? "error" : "unverified",
         message: localizeConnectorMessage(health.message || "", language),
         checkedAt: health.checkedAt || ""
       };
@@ -3674,10 +3733,10 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-setInterval(() => {
+if (!demoMode && !snapshotMode) setInterval(() => {
   updateJournalOutcomes().catch((error) => connectorFail("journal", error));
 }, 5 * 60 * 1000).unref();
 
-server.listen(port, () => {
-  console.log(`Web3 Ops Console running at http://localhost:${port}`);
+server.listen(port, host, () => {
+  console.log(`Web3 Ops Console running at http://${host}:${port}`);
 });

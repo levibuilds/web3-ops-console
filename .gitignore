@@ -1,6 +1,13 @@
 node_modules
 .env
+.env.*
+!.env.example
 data/
+data-demo/
 outputs/
 .DS_Store
 *.log
+coverage/
+dist/
+.tmp/
+.cache/

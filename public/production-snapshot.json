@@ -1,0 +1,2577 @@
+{
+  "provenance": {
+    "snapshot_at": "2026-09-23T22:40:29.339Z",
+    "trusted_source_ids": [
+      "bitget",
+      "binance",
+      "bybit",
+      "okx"
+    ],
+    "announcement_count": 34,
+    "campaign_count": 20
+  },
+  "state": {
+    "dataMode": "snapshot",
+    "snapshotAt": "2026-09-23T22:40:29.339Z",
+    "settings": {
+      "language": "zh",
+      "myExchangeId": "binance"
+    },
+    "capabilities": {
+      "aiContent": false
+    },
+    "watchlist": {
+      "assets": [],
+      "wallets": [],
+      "protocols": [],
+      "keywords": [],
+      "kols": [],
+      "brandTerms": []
+    },
+    "metrics": {
+      "ingested": 0,
+      "normalized": 0,
+      "alerts": 0,
+      "lastRunAt": null,
+      "lastLiveSyncAt": null,
+      "translationInputTokens": 0,
+      "translationOutputTokens": 0,
+      "aiInputTokens": 0,
+      "aiOutputTokens": 0,
+      "aiAnalystCalls": 0
+    },
+    "market": {},
+    "alerts": [],
+    "events": [],
+    "web3News": [],
+    "regulationItems": [],
+    "unlockEvents": [],
+    "whaleTransfers": [],
+    "journal": [],
+    "journalStats": {
+      "total": 0,
+      "evaluated": 0,
+      "hits": 0,
+      "hitRate": 0,
+      "averageReturn": 0,
+      "bySignalType": [],
+      "byAsset": []
+    },
+    "exchangeAnnouncements": [
+      {
+        "id": "bitget:zh:0688cc20a8d7d0fa",
+        "exchangeId": "bitget",
+        "exchange": "Bitget",
+        "language": "zh",
+        "title": "Bitget 关于KAT - Katana  充提服务暂停的公告",
+        "originalTitle": "Bitget 关于KAT - Katana  充提服务暂停的公告",
+        "category": "维护",
+        "opsCategoryId": "maintenance",
+        "opsCategory": "维护",
+        "tokens": [
+          "KAT"
+        ],
+        "tags": [
+          "资产维护"
+        ],
+        "url": "https://www.bitget.com/zh-CN/support/articles/12560603895948",
+        "sourceUrl": "https://www.bitget.com/support/announcement-center",
+        "publishedAt": "2026-09-23T14:34:30.196Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:29.338Z"
+      },
+      {
+        "id": "bitget:zh:7f2b26b14a0338c6",
+        "exchangeId": "bitget",
+        "exchange": "Bitget",
+        "language": "zh",
+        "title": "Bitget 关于上线 URNMUSDT、WBDUSDT 热门股票永续合约的公告",
+        "originalTitle": "Bitget 关于上线 URNMUSDT、WBDUSDT 热门股票永续合约的公告",
+        "category": "新币上线",
+        "opsCategoryId": "listing",
+        "opsCategory": "新币上线",
+        "tokens": [
+          "URNM",
+          "WBD"
+        ],
+        "tags": [
+          "合约"
+        ],
+        "url": "https://www.bitget.com/zh-CN/support/articles/12560603895947",
+        "sourceUrl": "https://www.bitget.com/support/announcement-center",
+        "publishedAt": "2026-09-23T14:05:58.000Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:29.338Z"
+      },
+      {
+        "id": "bitget:zh:26a34909b6cbc66b",
+        "exchangeId": "bitget",
+        "exchange": "Bitget",
+        "language": "zh",
+        "title": "Bitget已上线POLYMARKET IPO盘前永续合约",
+        "originalTitle": "Bitget已上线POLYMARKET IPO盘前永续合约",
+        "category": "新币上线",
+        "opsCategoryId": "listing",
+        "opsCategory": "新币上线",
+        "tokens": [
+          "POLYMARKET",
+          "IPO"
+        ],
+        "tags": [
+          "合约"
+        ],
+        "url": "https://www.bitget.com/zh-CN/support/articles/12560603895946",
+        "sourceUrl": "https://www.bitget.com/support/announcement-center",
+        "publishedAt": "2026-09-23T13:39:45.000Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:29.338Z"
+      },
+      {
+        "id": "bitget:zh:fed83fc6c97c5e10",
+        "exchangeId": "bitget",
+        "exchange": "Bitget",
+        "language": "zh",
+        "title": "Bitget 关于上线 rGPRO、rHSAI、rBRZE、rALRM、rLCLN 等462只股票现货的公告",
+        "originalTitle": "Bitget 关于上线 rGPRO、rHSAI、rBRZE、rALRM、rLCLN 等462只股票现货的公告",
+        "category": "新币上线",
+        "opsCategoryId": "listing",
+        "opsCategory": "新币上线",
+        "tokens": [],
+        "tags": [
+          "现货"
+        ],
+        "url": "https://www.bitget.com/zh-CN/support/articles/12560603895945",
+        "sourceUrl": "https://www.bitget.com/support/announcement-center",
+        "publishedAt": "2026-09-23T12:22:22.000Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:29.338Z"
+      },
+      {
+        "id": "bitget:zh:cda2cdaf9dbbb944",
+        "exchangeId": "bitget",
+        "exchange": "Bitget",
+        "language": "zh",
+        "title": "Bitget 关于暂停 RVV - Binance Smart Chain  充值服务的公告",
+        "originalTitle": "Bitget 关于暂停 RVV - Binance Smart Chain  充值服务的公告",
+        "category": "维护",
+        "opsCategoryId": "maintenance",
+        "opsCategory": "维护",
+        "tokens": [
+          "RVV"
+        ],
+        "tags": [
+          "资产维护"
+        ],
+        "url": "https://www.bitget.com/zh-CN/support/articles/12560603895912",
+        "sourceUrl": "https://www.bitget.com/support/announcement-center",
+        "publishedAt": "2026-09-23T06:43:20.166Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:29.338Z"
+      },
+      {
+        "id": "bitget:zh:d28d98ec3f579b0d",
+        "exchangeId": "bitget",
+        "exchange": "Bitget",
+        "language": "zh",
+        "title": "Bitget 关于暂停 DRIFT - Solana  充值服务的公告",
+        "originalTitle": "Bitget 关于暂停 DRIFT - Solana  充值服务的公告",
+        "category": "维护",
+        "opsCategoryId": "maintenance",
+        "opsCategory": "维护",
+        "tokens": [
+          "DRIFT"
+        ],
+        "tags": [
+          "资产维护"
+        ],
+        "url": "https://www.bitget.com/zh-CN/support/articles/12560603895911",
+        "sourceUrl": "https://www.bitget.com/support/announcement-center",
+        "publishedAt": "2026-09-23T06:43:05.075Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [
+          "SOL"
+        ],
+        "fetchedAt": "2026-09-23T22:40:29.338Z"
+      },
+      {
+        "id": "bitget:zh:7571ddbc5bb03a57",
+        "exchangeId": "bitget",
+        "exchange": "Bitget",
+        "language": "zh",
+        "title": "Bitget 关于暂停 FHE - Binance Smart Chain  充值服务的公告",
+        "originalTitle": "Bitget 关于暂停 FHE - Binance Smart Chain  充值服务的公告",
+        "category": "维护",
+        "opsCategoryId": "maintenance",
+        "opsCategory": "维护",
+        "tokens": [
+          "FHE"
+        ],
+        "tags": [
+          "资产维护"
+        ],
+        "url": "https://www.bitget.com/zh-CN/support/articles/12560603895910",
+        "sourceUrl": "https://www.bitget.com/support/announcement-center",
+        "publishedAt": "2026-09-23T06:42:50.280Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:29.338Z"
+      },
+      {
+        "id": "bitget:zh:6494df4677f089cc",
+        "exchangeId": "bitget",
+        "exchange": "Bitget",
+        "language": "zh",
+        "title": "Bitget 关于暂停 STG - Ethereum  充值服务的公告",
+        "originalTitle": "Bitget 关于暂停 STG - Ethereum  充值服务的公告",
+        "category": "维护",
+        "opsCategoryId": "maintenance",
+        "opsCategory": "维护",
+        "tokens": [
+          "STG"
+        ],
+        "tags": [
+          "资产维护"
+        ],
+        "url": "https://www.bitget.com/zh-CN/support/articles/12560603895906",
+        "sourceUrl": "https://www.bitget.com/support/announcement-center",
+        "publishedAt": "2026-09-23T04:05:55.093Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [
+          "ETH"
+        ],
+        "fetchedAt": "2026-09-23T22:40:29.338Z"
+      },
+      {
+        "id": "bitget:zh:002973dbbf6674d1",
+        "exchangeId": "bitget",
+        "exchange": "Bitget",
+        "language": "zh",
+        "title": "Bitget 关于暂停 STG - Arbitrum One  充值服务的公告",
+        "originalTitle": "Bitget 关于暂停 STG - Arbitrum One  充值服务的公告",
+        "category": "维护",
+        "opsCategoryId": "maintenance",
+        "opsCategory": "维护",
+        "tokens": [
+          "STG"
+        ],
+        "tags": [
+          "资产维护"
+        ],
+        "url": "https://www.bitget.com/zh-CN/support/articles/12560603895905",
+        "sourceUrl": "https://www.bitget.com/support/announcement-center",
+        "publishedAt": "2026-09-23T04:05:45.127Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [
+          "ARB"
+        ],
+        "fetchedAt": "2026-09-23T22:40:29.339Z"
+      },
+      {
+        "id": "binance:zh:ab75e4005cf61b4e",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "币安数字商城商家招募活动：入驻即享最高100 USDT奖励！",
+        "originalTitle": "币安数字商城商家招募活动：入驻即享最高100 USDT奖励！",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [],
+        "tags": [
+          "奖励"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/7fb2f9ed343b41aca519ae60314aa548",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-23T04:00:06.802Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.465Z"
+      },
+      {
+        "id": "bybit:zh:9ad991014853e3be",
+        "exchangeId": "bybit",
+        "exchange": "Bybit",
+        "language": "zh",
+        "title": "Bybit City Edition 10: Transform your community activity into bigger, better rewards!",
+        "originalTitle": "Bybit City Edition 10: Transform your community activity into bigger, better rewards!",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [],
+        "tags": [
+          "活动公告"
+        ],
+        "url": "https://announcements.bybit.com/en-US/article/bybit-city-edition-10-transform-your-community-activity-into-bigger-better-rewards--arte994947108e2/",
+        "sourceUrl": "https://announcements.bybit.com/en/",
+        "publishedAt": "2026-09-22T13:45:58.000Z",
+        "startsAt": "2026-09-22T10:11:25.000Z",
+        "endsAt": "2026-10-04T23:59:59.000Z",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.555Z"
+      },
+      {
+        "id": "binance:zh:5f60ee2f899169d0",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "币安Alpha交易竞赛：交易AEON (AEON) ，分享20万美元等值奖励（2026-09-22）",
+        "originalTitle": "币安Alpha交易竞赛：交易AEON (AEON) ，分享20万美元等值奖励（2026-09-22）",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [
+          "AEON"
+        ],
+        "tags": [
+          "奖励"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/f155c695dcf243fd87f3e7cea7a48e5c",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-22T11:30:35.166Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.466Z"
+      },
+      {
+        "id": "bitget:zh:56d0e639099f7625",
+        "exchangeId": "bitget",
+        "exchange": "Bitget",
+        "language": "zh",
+        "title": "关于恢复 BRC20 网络充值服务的公告",
+        "originalTitle": "关于恢复 BRC20 网络充值服务的公告",
+        "category": "维护",
+        "opsCategoryId": "maintenance",
+        "opsCategory": "维护",
+        "tokens": [
+          "BRC20"
+        ],
+        "tags": [
+          "资产维护"
+        ],
+        "url": "https://www.bitget.com/zh-CN/support/articles/12560603895944",
+        "sourceUrl": "https://www.bitget.com/support/announcement-center",
+        "publishedAt": "2026-09-22T11:28:09.000Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:29.338Z"
+      },
+      {
+        "id": "binance:zh:793a8bec99689f0d",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "BABY交易锦标赛：交易瓜分高达400 BNB奖池",
+        "originalTitle": "BABY交易锦标赛：交易瓜分高达400 BNB奖池",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [
+          "BABY",
+          "BNB"
+        ],
+        "tags": [
+          "奖励",
+          "交易赛"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/b8ed81af5344412a8d18386f1515516d",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-22T09:00:08.200Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.466Z"
+      },
+      {
+        "id": "bybit:zh:dfa70c67767fd4a1",
+        "exchangeId": "bybit",
+        "exchange": "Bybit",
+        "language": "zh",
+        "title": "Bybit Odds: View to Victory official product launch with a 17,000 USDT total prize pool!",
+        "originalTitle": "Bybit Odds: View to Victory official product launch with a 17,000 USDT total prize pool!",
+        "category": "新币上线",
+        "opsCategoryId": "listing",
+        "opsCategory": "新币上线",
+        "tokens": [],
+        "tags": [
+          "活动公告"
+        ],
+        "url": "https://announcements.bybit.com/en-US/article/bybit-odds-view-to-victory-official-product-launch-with-a-17-000-usdt-total-prize-pool--art2b5b075abe36/",
+        "sourceUrl": "https://announcements.bybit.com/en/",
+        "publishedAt": "2026-09-21T13:45:57.000Z",
+        "startsAt": "2026-09-21T00:00:00.000Z",
+        "endsAt": "2026-09-30T00:00:00.000Z",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.553Z"
+      },
+      {
+        "id": "binance:zh:ee37e624dc6f5a7a",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "币安Alpha交易竞赛：交易KiiChain (KII) ，分享10万美元等值奖励（2026-09-18）",
+        "originalTitle": "币安Alpha交易竞赛：交易KiiChain (KII) ，分享10万美元等值奖励（2026-09-18）",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [
+          "KII"
+        ],
+        "tags": [
+          "奖励"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/5f657405ef7444ec894290dcdd574498",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-18T11:00:18.248Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.466Z"
+      },
+      {
+        "id": "binance:zh:6b14c325b4d44f05",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "BANK交易锦标赛：交易瓜分高达400 BNB奖池",
+        "originalTitle": "BANK交易锦标赛：交易瓜分高达400 BNB奖池",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [
+          "BANK",
+          "BNB"
+        ],
+        "tags": [
+          "奖励",
+          "交易赛"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/f8d62103d9864d689220dea43bee3b6e",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-18T09:00:14.977Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.466Z"
+      },
+      {
+        "id": "okx:zh:a1d4b6ffd8c34851",
+        "exchangeId": "okx",
+        "exchange": "OKX",
+        "language": "zh",
+        "title": "欧易关于推迟 ONEUSDT 永续合约下线的公告",
+        "originalTitle": "欧易关于推迟 ONEUSDT 永续合约下线的公告",
+        "category": "新币上线",
+        "opsCategoryId": "listing",
+        "opsCategory": "新币上线",
+        "tokens": [
+          "ONE"
+        ],
+        "tags": [],
+        "url": "https://www.okx.com/zh-hans/help/section/announcements-latest-announcements",
+        "sourceUrl": "https://www.okx.com/zh-hans/help/section/announcements-latest-announcements",
+        "publishedAt": "2026-09-18T00:00:00.000Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.758Z"
+      },
+      {
+        "id": "binance:zh:879ba449e6e5d311",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "币安Alpha交易竞赛：交易Cap (CAP) ，分享10万美元等值奖励（2026-09-17）",
+        "originalTitle": "币安Alpha交易竞赛：交易Cap (CAP) ，分享10万美元等值奖励（2026-09-17）",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [
+          "CAP"
+        ],
+        "tags": [
+          "奖励"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/b5b07aeab3124b9b9e8fc714ee561d1a",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-17T11:00:14.087Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.466Z"
+      },
+      {
+        "id": "binance:zh:b92fa59c17202108",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "PROVE交易锦标赛：交易瓜分高达1,500,000 PROVE奖池",
+        "originalTitle": "PROVE交易锦标赛：交易瓜分高达1,500,000 PROVE奖池",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [
+          "PROVE"
+        ],
+        "tags": [
+          "奖励",
+          "交易赛"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/6a17368f88574ed59ca9bd7f9e70c510",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-17T09:00:16.873Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.466Z"
+      },
+      {
+        "id": "binance:zh:978d9920e0261d5e",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "币安新手嘉年华：黄金版礼包，瓜分200,000 美元等值奖池，开启加密之旅",
+        "originalTitle": "币安新手嘉年华：黄金版礼包，瓜分200,000 美元等值奖池，开启加密之旅",
+        "category": "新币上线",
+        "opsCategoryId": "listing",
+        "opsCategory": "新币上线",
+        "tokens": [],
+        "tags": [
+          "奖励",
+          "上新"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/77f71cda5408460fa63879806020cc0c",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-17T08:30:07.534Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.466Z"
+      },
+      {
+        "id": "binance:zh:7553199293c013ea",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "加入第七季币安钱包链上交易体验赛，在Arc上交易、瓜分200,000 美元等值奖励！",
+        "originalTitle": "加入第七季币安钱包链上交易体验赛，在Arc上交易、瓜分200,000 美元等值奖励！",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [],
+        "tags": [
+          "奖励"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/6cd02911b8284a969ecb44e57498e7f6",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-16T11:45:20.096Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.467Z"
+      },
+      {
+        "id": "binance:zh:76ea55e00c88064d",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "邀请好友，奖励自选！从ETH、SOL、USDC、MUB、SNDKB和SKHYB中挑选心仪奖励",
+        "originalTitle": "邀请好友，奖励自选！从ETH、SOL、USDC、MUB、SNDKB和SKHYB中挑选心仪奖励",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [
+          "SOL",
+          "MUB",
+          "SNDKB",
+          "SKHYB"
+        ],
+        "tags": [
+          "奖励"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/ad4b814a1bc64077ae0bfd8e7d3036dd",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-16T11:00:23.078Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [
+          "ETH",
+          "SOL"
+        ],
+        "fetchedAt": "2026-09-23T22:40:28.467Z"
+      },
+      {
+        "id": "binance:zh:7ebb0b6e4e05806f",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "NEAR交易锦标赛：交易瓜分高达400 BNB奖池",
+        "originalTitle": "NEAR交易锦标赛：交易瓜分高达400 BNB奖池",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [
+          "NEAR",
+          "BNB"
+        ],
+        "tags": [
+          "奖励",
+          "交易赛"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/aa958f0c3c174a2887ff2b634fec1e52",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-16T09:00:16.624Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.467Z"
+      },
+      {
+        "id": "binance:zh:eba708a125ba56f7",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "币安中秋 · 好运加码：集币安中秋，转百万豪礼，参与转盘赢iPhone Duo！",
+        "originalTitle": "币安中秋 · 好运加码：集币安中秋，转百万豪礼，参与转盘赢iPhone Duo！",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [],
+        "tags": [],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/d30d13d4cfbf47caa5043967e065eb3f",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-16T08:00:21.972Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.467Z"
+      },
+      {
+        "id": "binance:zh:d985b01d26dc9e8d",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "币安理财竞技场：瓜分20万RLUSD奖励，每周新限时活动不容错过（2026-09-16）",
+        "originalTitle": "币安理财竞技场：瓜分20万RLUSD奖励，每周新限时活动不容错过（2026-09-16）",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [
+          "RL"
+        ],
+        "tags": [
+          "奖励",
+          "理财"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/b3a4d9120b9a4397b1dfced9f8d35525",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-16T07:00:11.693Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.467Z"
+      },
+      {
+        "id": "binance:zh:9eecd13df7bf0052",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "币安Alpha交易竞赛：交易Pieverse (PIEVERSE) ，分享20万美元等值奖励（2026-09-15）",
+        "originalTitle": "币安Alpha交易竞赛：交易Pieverse (PIEVERSE) ，分享20万美元等值奖励（2026-09-15）",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [
+          "PIEVERSE"
+        ],
+        "tags": [
+          "奖励"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/6cef4eebd5864293b1644d6b0e094954",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-15T11:30:17.100Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.467Z"
+      },
+      {
+        "id": "binance:zh:ad5f1c4aacff1394",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "币安积分正式上线：完成任务、赚取积分、兑换奖励！",
+        "originalTitle": "币安积分正式上线：完成任务、赚取积分、兑换奖励！",
+        "category": "新币上线",
+        "opsCategoryId": "listing",
+        "opsCategory": "新币上线",
+        "tokens": [],
+        "tags": [
+          "奖励",
+          "上新"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/8c58e4eb0a6348398028738db0d8b3a3",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-15T08:30:11.514Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.467Z"
+      },
+      {
+        "id": "binance:zh:d083171aad294ed7",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "币安夏令营开营：10天边学边玩，瓜分10,000 USDC！",
+        "originalTitle": "币安夏令营开营：10天边学边玩，瓜分10,000 USDC！",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [],
+        "tags": [
+          "奖励"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/496452d67ccf4458922d5c9df8bddbd1",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-15T08:00:16.397Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.468Z"
+      },
+      {
+        "id": "binance:zh:ed1b8070d7ca826e",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "币安理财：U活期享最高7%年化收益率，VIP用户前50万U可享最高7.7%年化收益率（2026-09-15）",
+        "originalTitle": "币安理财：U活期享最高7%年化收益率，VIP用户前50万U可享最高7.7%年化收益率（2026-09-15）",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [],
+        "tags": [
+          "理财"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/47934ad1629f4236a80c3709e2cd116a",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-14T06:00:11.995Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.468Z"
+      },
+      {
+        "id": "binance:zh:18fa0eebc6960328",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "股票期权限时费率活动：交易1,000+只美股及ETF",
+        "originalTitle": "股票期权限时费率活动：交易1,000+只美股及ETF",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [],
+        "tags": [],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/0df4bdaf019e4804853ce9528210598a",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-14T05:00:16.279Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.468Z"
+      },
+      {
+        "id": "binance:zh:3cff56fe2e5e8f66",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "REZ交易锦标赛：交易瓜分高达200,000 USDC奖池",
+        "originalTitle": "REZ交易锦标赛：交易瓜分高达200,000 USDC奖池",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [
+          "REZ"
+        ],
+        "tags": [
+          "奖励",
+          "交易赛"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/ee6e5b7df8eb4556a472de06624555e2",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-11T09:00:44.789Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.468Z"
+      },
+      {
+        "id": "binance:zh:47afff7df4db000b",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "language": "zh",
+        "title": "币安理财：申购KGST活期产品，前100,000 KGST可享最高14%年化收益率（2026-09-13）",
+        "originalTitle": "币安理财：申购KGST活期产品，前100,000 KGST可享最高14%年化收益率（2026-09-13）",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [
+          "KGST"
+        ],
+        "tags": [
+          "理财"
+        ],
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/f6ff30454a124269bcf185891d11aaa5",
+        "sourceUrl": "https://www.binance.com/en/support/announcement/list/93",
+        "publishedAt": "2026-09-11T07:00:12.084Z",
+        "startsAt": "",
+        "endsAt": "",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.468Z"
+      },
+      {
+        "id": "bybit:zh:99f0da2a84be8c1c",
+        "exchangeId": "bybit",
+        "exchange": "Bybit",
+        "language": "zh",
+        "title": "Trade TradFi Perpetual Contracts with discounted fees",
+        "originalTitle": "Trade TradFi Perpetual Contracts with discounted fees",
+        "category": "活动",
+        "opsCategoryId": "campaign",
+        "opsCategory": "活动",
+        "tokens": [],
+        "tags": [
+          "活动公告"
+        ],
+        "url": "https://announcements.bybit.com/en-US/article/trade-tradfi-perpetual-contracts-with-discounted-fees--artb2fe3d16ab53/",
+        "sourceUrl": "https://announcements.bybit.com/en/",
+        "publishedAt": "2026-08-28T10:54:32.000Z",
+        "startsAt": "2026-08-11T00:00:00.000Z",
+        "endsAt": "2026-08-31T00:00:00.000Z",
+        "activityScore": 45,
+        "matchedAssets": [],
+        "fetchedAt": "2026-09-23T22:40:28.554Z"
+      }
+    ],
+    "listingRace": [
+      {
+        "token": "URNM · 合约",
+        "firstExchange": "Bitget",
+        "firstAt": "2026-09-23T14:05:58.000Z",
+        "myExchange": "Binance",
+        "myExchangeId": "binance",
+        "myPublishedAt": "",
+        "lagDays": null,
+        "lagLabel": "未采集到公告",
+        "isNew24h": true,
+        "exchanges": [
+          {
+            "exchange": "Binance",
+            "exchangeId": "binance",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "OKX",
+            "exchangeId": "okx",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Bybit",
+            "exchangeId": "bybit",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "token": "URNM",
+            "marketType": "合约",
+            "exchange": "Bitget",
+            "exchangeId": "bitget",
+            "publishedAt": "2026-09-23T14:05:58.000Z",
+            "title": "Bitget 关于上线 URNMUSDT、WBDUSDT 热门股票永续合约的公告",
+            "url": "https://www.bitget.com/zh-CN/support/articles/12560603895947"
+          },
+          {
+            "exchange": "KuCoin",
+            "exchangeId": "kucoin",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Gate",
+            "exchangeId": "gate",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "MEXC",
+            "exchangeId": "mexc",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "HTX",
+            "exchangeId": "htx",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Coinbase",
+            "exchangeId": "coinbase",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Kraken",
+            "exchangeId": "kraken",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Crypto.com",
+            "exchangeId": "crypto_com",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Bitfinex",
+            "exchangeId": "bitfinex",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "BitMEX",
+            "exchangeId": "bitmex",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Deribit",
+            "exchangeId": "deribit",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Bitstamp",
+            "exchangeId": "bitstamp",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Gemini",
+            "exchangeId": "gemini",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "LBank",
+            "exchangeId": "lbank",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "BingX",
+            "exchangeId": "bingx",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "BitMart",
+            "exchangeId": "bitmart",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "CoinEx",
+            "exchangeId": "coinex",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          }
+        ]
+      },
+      {
+        "token": "WBD · 合约",
+        "firstExchange": "Bitget",
+        "firstAt": "2026-09-23T14:05:58.000Z",
+        "myExchange": "Binance",
+        "myExchangeId": "binance",
+        "myPublishedAt": "",
+        "lagDays": null,
+        "lagLabel": "未采集到公告",
+        "isNew24h": true,
+        "exchanges": [
+          {
+            "exchange": "Binance",
+            "exchangeId": "binance",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "OKX",
+            "exchangeId": "okx",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Bybit",
+            "exchangeId": "bybit",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "token": "WBD",
+            "marketType": "合约",
+            "exchange": "Bitget",
+            "exchangeId": "bitget",
+            "publishedAt": "2026-09-23T14:05:58.000Z",
+            "title": "Bitget 关于上线 URNMUSDT、WBDUSDT 热门股票永续合约的公告",
+            "url": "https://www.bitget.com/zh-CN/support/articles/12560603895947"
+          },
+          {
+            "exchange": "KuCoin",
+            "exchangeId": "kucoin",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Gate",
+            "exchangeId": "gate",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "MEXC",
+            "exchangeId": "mexc",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "HTX",
+            "exchangeId": "htx",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Coinbase",
+            "exchangeId": "coinbase",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Kraken",
+            "exchangeId": "kraken",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Crypto.com",
+            "exchangeId": "crypto_com",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Bitfinex",
+            "exchangeId": "bitfinex",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "BitMEX",
+            "exchangeId": "bitmex",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Deribit",
+            "exchangeId": "deribit",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Bitstamp",
+            "exchangeId": "bitstamp",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Gemini",
+            "exchangeId": "gemini",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "LBank",
+            "exchangeId": "lbank",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "BingX",
+            "exchangeId": "bingx",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "BitMart",
+            "exchangeId": "bitmart",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "CoinEx",
+            "exchangeId": "coinex",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          }
+        ]
+      },
+      {
+        "token": "POLYMARKET · 合约",
+        "firstExchange": "Bitget",
+        "firstAt": "2026-09-23T13:39:45.000Z",
+        "myExchange": "Binance",
+        "myExchangeId": "binance",
+        "myPublishedAt": "",
+        "lagDays": null,
+        "lagLabel": "未采集到公告",
+        "isNew24h": true,
+        "exchanges": [
+          {
+            "exchange": "Binance",
+            "exchangeId": "binance",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "OKX",
+            "exchangeId": "okx",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Bybit",
+            "exchangeId": "bybit",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "token": "POLYMARKET",
+            "marketType": "合约",
+            "exchange": "Bitget",
+            "exchangeId": "bitget",
+            "publishedAt": "2026-09-23T13:39:45.000Z",
+            "title": "Bitget已上线POLYMARKET IPO盘前永续合约",
+            "url": "https://www.bitget.com/zh-CN/support/articles/12560603895946"
+          },
+          {
+            "exchange": "KuCoin",
+            "exchangeId": "kucoin",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Gate",
+            "exchangeId": "gate",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "MEXC",
+            "exchangeId": "mexc",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "HTX",
+            "exchangeId": "htx",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Coinbase",
+            "exchangeId": "coinbase",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Kraken",
+            "exchangeId": "kraken",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Crypto.com",
+            "exchangeId": "crypto_com",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Bitfinex",
+            "exchangeId": "bitfinex",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "BitMEX",
+            "exchangeId": "bitmex",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Deribit",
+            "exchangeId": "deribit",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Bitstamp",
+            "exchangeId": "bitstamp",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Gemini",
+            "exchangeId": "gemini",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "LBank",
+            "exchangeId": "lbank",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "BingX",
+            "exchangeId": "bingx",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "BitMart",
+            "exchangeId": "bitmart",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "CoinEx",
+            "exchangeId": "coinex",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          }
+        ]
+      },
+      {
+        "token": "IPO · 合约",
+        "firstExchange": "Bitget",
+        "firstAt": "2026-09-23T13:39:45.000Z",
+        "myExchange": "Binance",
+        "myExchangeId": "binance",
+        "myPublishedAt": "",
+        "lagDays": null,
+        "lagLabel": "未采集到公告",
+        "isNew24h": true,
+        "exchanges": [
+          {
+            "exchange": "Binance",
+            "exchangeId": "binance",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "OKX",
+            "exchangeId": "okx",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Bybit",
+            "exchangeId": "bybit",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "token": "IPO",
+            "marketType": "合约",
+            "exchange": "Bitget",
+            "exchangeId": "bitget",
+            "publishedAt": "2026-09-23T13:39:45.000Z",
+            "title": "Bitget已上线POLYMARKET IPO盘前永续合约",
+            "url": "https://www.bitget.com/zh-CN/support/articles/12560603895946"
+          },
+          {
+            "exchange": "KuCoin",
+            "exchangeId": "kucoin",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Gate",
+            "exchangeId": "gate",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "MEXC",
+            "exchangeId": "mexc",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "HTX",
+            "exchangeId": "htx",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Coinbase",
+            "exchangeId": "coinbase",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Kraken",
+            "exchangeId": "kraken",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Crypto.com",
+            "exchangeId": "crypto_com",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Bitfinex",
+            "exchangeId": "bitfinex",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "BitMEX",
+            "exchangeId": "bitmex",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Deribit",
+            "exchangeId": "deribit",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Bitstamp",
+            "exchangeId": "bitstamp",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Gemini",
+            "exchangeId": "gemini",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "LBank",
+            "exchangeId": "lbank",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "BingX",
+            "exchangeId": "bingx",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "BitMart",
+            "exchangeId": "bitmart",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "CoinEx",
+            "exchangeId": "coinex",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          }
+        ]
+      },
+      {
+        "token": "ONE · 合约",
+        "firstExchange": "OKX",
+        "firstAt": "2026-09-18T00:00:00.000Z",
+        "myExchange": "Binance",
+        "myExchangeId": "binance",
+        "myPublishedAt": "",
+        "lagDays": null,
+        "lagLabel": "未采集到公告",
+        "isNew24h": false,
+        "exchanges": [
+          {
+            "exchange": "Binance",
+            "exchangeId": "binance",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "token": "ONE",
+            "marketType": "合约",
+            "exchange": "OKX",
+            "exchangeId": "okx",
+            "publishedAt": "2026-09-18T00:00:00.000Z",
+            "title": "欧易关于推迟 ONEUSDT 永续合约下线的公告",
+            "url": "https://www.okx.com/zh-hans/help/section/announcements-latest-announcements"
+          },
+          {
+            "exchange": "Bybit",
+            "exchangeId": "bybit",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Bitget",
+            "exchangeId": "bitget",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "KuCoin",
+            "exchangeId": "kucoin",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Gate",
+            "exchangeId": "gate",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "MEXC",
+            "exchangeId": "mexc",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "HTX",
+            "exchangeId": "htx",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Coinbase",
+            "exchangeId": "coinbase",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Kraken",
+            "exchangeId": "kraken",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Crypto.com",
+            "exchangeId": "crypto_com",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Bitfinex",
+            "exchangeId": "bitfinex",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "BitMEX",
+            "exchangeId": "bitmex",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Deribit",
+            "exchangeId": "deribit",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Bitstamp",
+            "exchangeId": "bitstamp",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "Gemini",
+            "exchangeId": "gemini",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "LBank",
+            "exchangeId": "lbank",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "BingX",
+            "exchangeId": "bingx",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "BitMart",
+            "exchangeId": "bitmart",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          },
+          {
+            "exchange": "CoinEx",
+            "exchangeId": "coinex",
+            "publishedAt": "",
+            "title": "",
+            "url": ""
+          }
+        ]
+      }
+    ],
+    "campaignFrequency": {
+      "myExchangeId": "binance",
+      "myExchange": "Binance",
+      "types": [
+        "空投奖励",
+        "交易赛",
+        "其他",
+        "理财增币",
+        "手续费返佣"
+      ],
+      "rows": [
+        {
+          "exchangeId": "binance",
+          "exchange": "Binance",
+          "isMine": true,
+          "total": 18,
+          "byType": {
+            "空投奖励": 3,
+            "交易赛": 9,
+            "其他": 3,
+            "理财增币": 3,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "okx",
+          "exchange": "OKX",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "bybit",
+          "exchange": "Bybit",
+          "isMine": false,
+          "total": 2,
+          "byType": {
+            "空投奖励": 1,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 1
+          }
+        },
+        {
+          "exchangeId": "bitget",
+          "exchange": "Bitget",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "kucoin",
+          "exchange": "KuCoin",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "gate",
+          "exchange": "Gate",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "mexc",
+          "exchange": "MEXC",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "htx",
+          "exchange": "HTX",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "coinbase",
+          "exchange": "Coinbase",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "kraken",
+          "exchange": "Kraken",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "crypto_com",
+          "exchange": "Crypto.com",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "bitfinex",
+          "exchange": "Bitfinex",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "bitmex",
+          "exchange": "BitMEX",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "deribit",
+          "exchange": "Deribit",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "bitstamp",
+          "exchange": "Bitstamp",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "gemini",
+          "exchange": "Gemini",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "lbank",
+          "exchange": "LBank",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "bingx",
+          "exchange": "BingX",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "bitmart",
+          "exchange": "BitMart",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        },
+        {
+          "exchangeId": "coinex",
+          "exchange": "CoinEx",
+          "isMine": false,
+          "total": 0,
+          "byType": {
+            "空投奖励": 0,
+            "交易赛": 0,
+            "其他": 0,
+            "理财增币": 0,
+            "手续费返佣": 0
+          }
+        }
+      ]
+    },
+    "campaigns": [
+      {
+        "id": "cmp:binance:zh:ab75e4005cf61b4e",
+        "announcementId": "binance:zh:ab75e4005cf61b4e",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "空投奖励",
+        "campaignTypeId": "airdrop_reward",
+        "tokens": [],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-23T04:00:06.802Z",
+        "structured": 1,
+        "title": "币安数字商城商家招募活动：入驻即享最高100 USDT奖励！",
+        "originalTitle": "币安数字商城商家招募活动：入驻即享最高100 USDT奖励！",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/7fb2f9ed343b41aca519ae60314aa548",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:bybit:zh:9ad991014853e3be",
+        "announcementId": "bybit:zh:9ad991014853e3be",
+        "exchangeId": "bybit",
+        "exchange": "Bybit",
+        "campaignType": "空投奖励",
+        "campaignTypeId": "airdrop_reward",
+        "tokens": [],
+        "startsAt": "2026-09-22T10:11:25.000Z",
+        "endsAt": "2026-10-04T23:59:59.000Z",
+        "publishedAt": "2026-09-22T13:45:58.000Z",
+        "structured": 1,
+        "title": "Bybit City Edition 10: Transform your community activity into bigger, better rewards!",
+        "originalTitle": "Bybit City Edition 10: Transform your community activity into bigger, better rewards!",
+        "url": "https://announcements.bybit.com/en-US/article/bybit-city-edition-10-transform-your-community-activity-into-bigger-better-rewards--arte994947108e2/",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:5f60ee2f899169d0",
+        "announcementId": "binance:zh:5f60ee2f899169d0",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "交易赛",
+        "campaignTypeId": "trading_competition",
+        "tokens": [
+          "AEON"
+        ],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-22T11:30:35.166Z",
+        "structured": 1,
+        "title": "币安Alpha交易竞赛：交易AEON (AEON) ，分享20万美元等值奖励（2026-09-22）",
+        "originalTitle": "币安Alpha交易竞赛：交易AEON (AEON) ，分享20万美元等值奖励（2026-09-22）",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/f155c695dcf243fd87f3e7cea7a48e5c",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:793a8bec99689f0d",
+        "announcementId": "binance:zh:793a8bec99689f0d",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "交易赛",
+        "campaignTypeId": "trading_competition",
+        "tokens": [
+          "BABY",
+          "BNB"
+        ],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-22T09:00:08.200Z",
+        "structured": 1,
+        "title": "BABY交易锦标赛：交易瓜分高达400 BNB奖池",
+        "originalTitle": "BABY交易锦标赛：交易瓜分高达400 BNB奖池",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/b8ed81af5344412a8d18386f1515516d",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:ee37e624dc6f5a7a",
+        "announcementId": "binance:zh:ee37e624dc6f5a7a",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "交易赛",
+        "campaignTypeId": "trading_competition",
+        "tokens": [
+          "KII"
+        ],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-18T11:00:18.248Z",
+        "structured": 1,
+        "title": "币安Alpha交易竞赛：交易KiiChain (KII) ，分享10万美元等值奖励（2026-09-18）",
+        "originalTitle": "币安Alpha交易竞赛：交易KiiChain (KII) ，分享10万美元等值奖励（2026-09-18）",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/5f657405ef7444ec894290dcdd574498",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:6b14c325b4d44f05",
+        "announcementId": "binance:zh:6b14c325b4d44f05",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "交易赛",
+        "campaignTypeId": "trading_competition",
+        "tokens": [
+          "BANK",
+          "BNB"
+        ],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-18T09:00:14.977Z",
+        "structured": 1,
+        "title": "BANK交易锦标赛：交易瓜分高达400 BNB奖池",
+        "originalTitle": "BANK交易锦标赛：交易瓜分高达400 BNB奖池",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/f8d62103d9864d689220dea43bee3b6e",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:879ba449e6e5d311",
+        "announcementId": "binance:zh:879ba449e6e5d311",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "交易赛",
+        "campaignTypeId": "trading_competition",
+        "tokens": [
+          "CAP"
+        ],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-17T11:00:14.087Z",
+        "structured": 1,
+        "title": "币安Alpha交易竞赛：交易Cap (CAP) ，分享10万美元等值奖励（2026-09-17）",
+        "originalTitle": "币安Alpha交易竞赛：交易Cap (CAP) ，分享10万美元等值奖励（2026-09-17）",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/b5b07aeab3124b9b9e8fc714ee561d1a",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:b92fa59c17202108",
+        "announcementId": "binance:zh:b92fa59c17202108",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "交易赛",
+        "campaignTypeId": "trading_competition",
+        "tokens": [
+          "PROVE"
+        ],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-17T09:00:16.873Z",
+        "structured": 1,
+        "title": "PROVE交易锦标赛：交易瓜分高达1,500,000 PROVE奖池",
+        "originalTitle": "PROVE交易锦标赛：交易瓜分高达1,500,000 PROVE奖池",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/6a17368f88574ed59ca9bd7f9e70c510",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:7553199293c013ea",
+        "announcementId": "binance:zh:7553199293c013ea",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "空投奖励",
+        "campaignTypeId": "airdrop_reward",
+        "tokens": [],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-16T11:45:20.096Z",
+        "structured": 1,
+        "title": "加入第七季币安钱包链上交易体验赛，在Arc上交易、瓜分200,000 美元等值奖励！",
+        "originalTitle": "加入第七季币安钱包链上交易体验赛，在Arc上交易、瓜分200,000 美元等值奖励！",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/6cd02911b8284a969ecb44e57498e7f6",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:76ea55e00c88064d",
+        "announcementId": "binance:zh:76ea55e00c88064d",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "空投奖励",
+        "campaignTypeId": "airdrop_reward",
+        "tokens": [
+          "SOL",
+          "MUB",
+          "SNDKB",
+          "SKHYB"
+        ],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-16T11:00:23.078Z",
+        "structured": 1,
+        "title": "邀请好友，奖励自选！从ETH、SOL、USDC、MUB、SNDKB和SKHYB中挑选心仪奖励",
+        "originalTitle": "邀请好友，奖励自选！从ETH、SOL、USDC、MUB、SNDKB和SKHYB中挑选心仪奖励",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/ad4b814a1bc64077ae0bfd8e7d3036dd",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:7ebb0b6e4e05806f",
+        "announcementId": "binance:zh:7ebb0b6e4e05806f",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "交易赛",
+        "campaignTypeId": "trading_competition",
+        "tokens": [
+          "NEAR",
+          "BNB"
+        ],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-16T09:00:16.624Z",
+        "structured": 1,
+        "title": "NEAR交易锦标赛：交易瓜分高达400 BNB奖池",
+        "originalTitle": "NEAR交易锦标赛：交易瓜分高达400 BNB奖池",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/aa958f0c3c174a2887ff2b634fec1e52",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:eba708a125ba56f7",
+        "announcementId": "binance:zh:eba708a125ba56f7",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "其他",
+        "campaignTypeId": "other",
+        "tokens": [],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-16T08:00:21.972Z",
+        "structured": 0,
+        "title": "币安中秋 · 好运加码：集币安中秋，转百万豪礼，参与转盘赢iPhone Duo！",
+        "originalTitle": "币安中秋 · 好运加码：集币安中秋，转百万豪礼，参与转盘赢iPhone Duo！",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/d30d13d4cfbf47caa5043967e065eb3f",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:d985b01d26dc9e8d",
+        "announcementId": "binance:zh:d985b01d26dc9e8d",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "理财增币",
+        "campaignTypeId": "earn",
+        "tokens": [
+          "RL"
+        ],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-16T07:00:11.693Z",
+        "structured": 1,
+        "title": "币安理财竞技场：瓜分20万RLUSD奖励，每周新限时活动不容错过（2026-09-16）",
+        "originalTitle": "币安理财竞技场：瓜分20万RLUSD奖励，每周新限时活动不容错过（2026-09-16）",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/b3a4d9120b9a4397b1dfced9f8d35525",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:9eecd13df7bf0052",
+        "announcementId": "binance:zh:9eecd13df7bf0052",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "交易赛",
+        "campaignTypeId": "trading_competition",
+        "tokens": [
+          "PIEVERSE"
+        ],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-15T11:30:17.100Z",
+        "structured": 1,
+        "title": "币安Alpha交易竞赛：交易Pieverse (PIEVERSE) ，分享20万美元等值奖励（2026-09-15）",
+        "originalTitle": "币安Alpha交易竞赛：交易Pieverse (PIEVERSE) ，分享20万美元等值奖励（2026-09-15）",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/6cef4eebd5864293b1644d6b0e094954",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:d083171aad294ed7",
+        "announcementId": "binance:zh:d083171aad294ed7",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "其他",
+        "campaignTypeId": "other",
+        "tokens": [],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-15T08:00:16.397Z",
+        "structured": 0,
+        "title": "币安夏令营开营：10天边学边玩，瓜分10,000 USDC！",
+        "originalTitle": "币安夏令营开营：10天边学边玩，瓜分10,000 USDC！",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/496452d67ccf4458922d5c9df8bddbd1",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:ed1b8070d7ca826e",
+        "announcementId": "binance:zh:ed1b8070d7ca826e",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "理财增币",
+        "campaignTypeId": "earn",
+        "tokens": [],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-14T06:00:11.995Z",
+        "structured": 1,
+        "title": "币安理财：U活期享最高7%年化收益率，VIP用户前50万U可享最高7.7%年化收益率（2026-09-15）",
+        "originalTitle": "币安理财：U活期享最高7%年化收益率，VIP用户前50万U可享最高7.7%年化收益率（2026-09-15）",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/47934ad1629f4236a80c3709e2cd116a",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:18fa0eebc6960328",
+        "announcementId": "binance:zh:18fa0eebc6960328",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "其他",
+        "campaignTypeId": "other",
+        "tokens": [],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-14T05:00:16.279Z",
+        "structured": 0,
+        "title": "股票期权限时费率活动：交易1,000+只美股及ETF",
+        "originalTitle": "股票期权限时费率活动：交易1,000+只美股及ETF",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/0df4bdaf019e4804853ce9528210598a",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:3cff56fe2e5e8f66",
+        "announcementId": "binance:zh:3cff56fe2e5e8f66",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "交易赛",
+        "campaignTypeId": "trading_competition",
+        "tokens": [
+          "REZ"
+        ],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-11T09:00:44.789Z",
+        "structured": 1,
+        "title": "REZ交易锦标赛：交易瓜分高达200,000 USDC奖池",
+        "originalTitle": "REZ交易锦标赛：交易瓜分高达200,000 USDC奖池",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/ee6e5b7df8eb4556a472de06624555e2",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:binance:zh:47afff7df4db000b",
+        "announcementId": "binance:zh:47afff7df4db000b",
+        "exchangeId": "binance",
+        "exchange": "Binance",
+        "campaignType": "理财增币",
+        "campaignTypeId": "earn",
+        "tokens": [
+          "KGST"
+        ],
+        "startsAt": "",
+        "endsAt": "",
+        "publishedAt": "2026-09-11T07:00:12.084Z",
+        "structured": 1,
+        "title": "币安理财：申购KGST活期产品，前100,000 KGST可享最高14%年化收益率（2026-09-13）",
+        "originalTitle": "币安理财：申购KGST活期产品，前100,000 KGST可享最高14%年化收益率（2026-09-13）",
+        "url": "https://www.binance.com/zh-CN/support/announcement/detail/f6ff30454a124269bcf185891d11aaa5",
+        "localizedTitle": ""
+      },
+      {
+        "id": "cmp:bybit:zh:99f0da2a84be8c1c",
+        "announcementId": "bybit:zh:99f0da2a84be8c1c",
+        "exchangeId": "bybit",
+        "exchange": "Bybit",
+        "campaignType": "手续费返佣",
+        "campaignTypeId": "fee_rebate",
+        "tokens": [],
+        "startsAt": "2026-08-11T00:00:00.000Z",
+        "endsAt": "2026-08-31T00:00:00.000Z",
+        "publishedAt": "2026-08-28T10:54:32.000Z",
+        "structured": 1,
+        "title": "Trade TradFi Perpetual Contracts with discounted fees",
+        "originalTitle": "Trade TradFi Perpetual Contracts with discounted fees",
+        "url": "https://announcements.bybit.com/en-US/article/trade-tradfi-perpetual-contracts-with-discounted-fees--artb2fe3d16ab53/",
+        "localizedTitle": ""
+      }
+    ],
+    "feedback": [],
+    "connectors": [
+      {
+        "name": "Alchemy Notify",
+        "status": "unverified",
+        "mode": "simulated",
+        "message": "",
+        "checkedAt": "",
+        "docs": "https://www.alchemy.com/docs/reference/notify-api-quickstart"
+      },
+      {
+        "name": "Moralis Streams",
+        "status": "unverified",
+        "mode": "simulated",
+        "message": "",
+        "checkedAt": "",
+        "docs": ""
+      },
+      {
+        "name": "CoinGecko",
+        "status": "unverified",
+        "mode": "public_api",
+        "message": "",
+        "checkedAt": "",
+        "docs": "https://docs.coingecko.com/reference/simple-price"
+      },
+      {
+        "name": "CryptoPanic",
+        "status": "unverified",
+        "mode": "needs_key",
+        "message": "",
+        "checkedAt": "",
+        "docs": "https://cryptopanic.com/developers/api/about"
+      },
+      {
+        "name": "DefiLlama",
+        "status": "unverified",
+        "mode": "public_api_ready",
+        "message": "",
+        "checkedAt": "",
+        "docs": "https://api-docs.defillama.com/"
+      },
+      {
+        "name": "X KOL",
+        "status": "unverified",
+        "mode": "needs_key",
+        "message": "",
+        "checkedAt": "",
+        "docs": "https://docs.x.com/x-api/posts/search-recent-posts"
+      },
+      {
+        "name": "Etherscan Whales",
+        "status": "unverified",
+        "mode": "needs_key",
+        "message": "",
+        "checkedAt": "",
+        "docs": "https://docs.etherscan.io/api-reference/endpoint/txlist"
+      }
+    ],
+    "exchangeSources": [
+      {
+        "id": "binance",
+        "name": "Binance",
+        "url": "https://www.binance.com/en/support/announcement/list/93",
+        "docs": "https://www.binance.com/en/support/announcement/list/93",
+        "status": "ready",
+        "message": "已同步 20 条中文活动公告",
+        "checkedAt": "2026-09-23T22:40:28.468Z"
+      },
+      {
+        "id": "okx",
+        "name": "OKX",
+        "url": "https://www.okx.com/help/section/announcements-latest-announcements",
+        "docs": "https://www.okx.com/en-us/help/section/announcements-latest-announcements",
+        "status": "ready",
+        "message": "已同步 15 条中文公告",
+        "checkedAt": "2026-09-23T22:40:28.758Z"
+      },
+      {
+        "id": "bybit",
+        "name": "Bybit",
+        "url": "https://announcements.bybit.com/en/",
+        "docs": "https://bybit-exchange.github.io/docs/v5/announcement",
+        "status": "ready",
+        "message": "已同步 3 条中文活动公告",
+        "checkedAt": "2026-09-23T22:40:28.555Z"
+      },
+      {
+        "id": "bitget",
+        "name": "Bitget",
+        "url": "https://www.bitget.com/support/announcement-center",
+        "docs": "https://www.bitget.com/api-doc/common/notice/Get-All-Notices",
+        "status": "ready",
+        "message": "已同步 10 条中文公告",
+        "checkedAt": "2026-09-23T22:40:29.339Z"
+      },
+      {
+        "id": "kucoin",
+        "name": "KuCoin",
+        "url": "https://www.kucoin.com/announcement",
+        "docs": "https://www.kucoin.com/docs-new/rest/spot-trading/market-data/get-announcements",
+        "status": "unverified",
+        "message": "",
+        "checkedAt": ""
+      },
+      {
+        "id": "gate",
+        "name": "Gate",
+        "url": "https://www.gate.com/en-us/announcements",
+        "docs": "https://www.gate.com/en-us/announcements",
+        "status": "unverified",
+        "message": "",
+        "checkedAt": ""
+      },
+      {
+        "id": "mexc",
+        "name": "MEXC",
+        "url": "https://www.mexc.com/announcements/all",
+        "docs": "https://www.mexc.com/announcements/all",
+        "status": "unverified",
+        "message": "",
+        "checkedAt": ""
+      },
+      {
+        "id": "htx",
+        "name": "HTX",
+        "url": "https://www.htx.com/en-us/support/",
+        "docs": "https://www.htx.com/en-us/support/",
+        "status": "unverified",
+        "message": "",
+        "checkedAt": ""
+      },
+      {
+        "id": "coinbase",
+        "name": "Coinbase",
+        "url": "https://www.coinbase.com/blog/announcements",
+        "docs": "https://www.coinbase.com/blog/announcements",
+        "status": "unverified",
+        "message": "",
+        "checkedAt": ""
+      },
+      {
+        "id": "kraken",
+        "name": "Kraken",
+        "url": "https://blog.kraken.com/category/product",
+        "docs": "https://blog.kraken.com/category/product",
+        "status": "unverified",
+        "message": "",
+        "checkedAt": ""
+      },
+      {
+        "id": "crypto_com",
+        "name": "Crypto.com",
+        "url": "https://crypto.com/product-news",
+        "docs": "https://crypto.com/product-news",
+        "status": "unverified",
+        "message": "",
+        "checkedAt": ""
+      },
+      {
+        "id": "bitfinex",
+        "name": "Bitfinex",
+        "url": "https://blog.bitfinex.com/category/announcements/",
+        "docs": "https://blog.bitfinex.com/category/announcements/",
+        "status": "unverified",
+        "message": "",
+        "checkedAt": ""
+      },
+      {
+        "id": "bitmex",
+        "name": "BitMEX",
+        "url": "https://blog.bitmex.com/category/site-announcements/",
+        "docs": "https://blog.bitmex.com/category/site-announcements/",
+        "status": "unverified",
+        "message": "",
+        "checkedAt": ""
+      },
+      {
+        "id": "deribit",
+        "name": "Deribit",
+        "url": "https://insights.deribit.com/exchange-updates/",
+        "docs": "https://insights.deribit.com/exchange-updates/",
+        "status": "unverified",
+        "message": "",
+        "checkedAt": ""
+      },
+      {
+        "id": "bitstamp",
+        "name": "Bitstamp",
+        "url": "https://blog.bitstamp.net/category/product/",
+        "docs": "https://blog.bitstamp.net/category/product/",
+        "status": "unverified",
+        "message": "",
+        "checkedAt": ""
+      },
+      {
+        "id": "gemini",
+        "name": "Gemini",
+        "url": "https://www.gemini.com/blog",
+        "docs": "https://www.gemini.com/blog",
+        "status": "unverified",
+        "message": "",
+        "checkedAt": ""
+      },
+      {
+        "id": "lbank",
+        "name": "LBank",
+        "url": "https://support.lbank.com/hc/en-gb/categories/900000148646-Announcements",
+        "docs": "https://support.lbank.com/hc/en-gb/categories/900000148646-Announcements",
+        "status": "unverified",
+        "message": "",
+        "checkedAt": ""
+      },
+      {
+        "id": "bingx",
+        "name": "BingX",
+        "url": "https://support.bingx.com/hc/en-001/categories/360000184993-Announcements",
+        "docs": "https://support.bingx.com/hc/en-001/categories/360000184993-Announcements",
+        "status": "unverified",
+        "message": "",
+        "checkedAt": ""
+      },
+      {
+        "id": "bitmart",
+        "name": "BitMart",
+        "url": "https://support.bitmart.com/hc/en-us/categories/360002516474-Announcements",
+        "docs": "https://support.bitmart.com/hc/en-us/categories/360002516474-Announcements",
+        "status": "unverified",
+        "message": "",
+        "checkedAt": ""
+      },
+      {
+        "id": "coinex",
+        "name": "CoinEx",
+        "url": "https://announcement.coinex.com/hc/en-us/categories/360000031353-Announcement",
+        "docs": "https://announcement.coinex.com/hc/en-us/categories/360000031353-Announcement",
+        "status": "unverified",
+        "message": "",
+        "checkedAt": ""
+      }
+    ]
+  },
+  "report": {
+    "report": "# Operations Brief / 运营情报简报\n\n快照采集时间：2026-09-23T22:40:29.339Z\n生成方式：规则汇总，未调用模型。公告分类需要核对原文。\n\n## Executive Summary\n\n已收录 34 条公告，来自 4 个有记录的交易所；结构化活动 20 条。\n\n## Important Listings\n\n- Bitget：Bitget 关于上线 URNMUSDT、WBDUSDT 热门股票永续合约的公告（2026-09-23）\n- Bitget：Bitget已上线POLYMARKET IPO盘前永续合约（2026-09-23）\n- Bitget：Bitget 关于上线 rGPRO、rHSAI、rBRZE、rALRM、rLCLN 等462只股票现货的公告（2026-09-23）\n- Bybit：Bybit Odds: View to Victory official product launch with a 17,000 USDT total prize pool!（2026-09-21）\n- OKX：欧易关于推迟 ONEUSDT 永续合约下线的公告（2026-09-18）\n\n## Exchange Campaigns\n\n- Binance：币安数字商城商家招募活动：入驻即享最高100 USDT奖励！（2026-09-23）\n- Bybit：Bybit City Edition 10: Transform your community activity into bigger, better rewards!（2026-09-22）\n- Binance：币安Alpha交易竞赛：交易AEON (AEON) ，分享20万美元等值奖励（2026-09-22）（2026-09-22）\n- Binance：BABY交易锦标赛：交易瓜分高达400 BNB奖池（2026-09-22）\n- Binance：币安Alpha交易竞赛：交易KiiChain (KII) ，分享10万美元等值奖励（2026-09-18）（2026-09-18）\n\n## Market Events\n\n- 本次快照未采集可核验的市场事件。\n\n## Competitive Moves\n\n- 按交易所和公告类别查看收录记录；数量仅代表本次采集范围。\n\n## Risks / Watchlist\n\n- 页面抓取来源未纳入本快照；公告时间以来源提供的发布时间为准。\n- 上币公告时间不等于开放交易时间。\n\n## Suggested Follow-ups\n\n- 打开公告原文，核对规则、日期及适用地区后再做运营决策。",
+    "generatedAt": "2026-09-23T22:40:29.339Z",
+    "language": "zh",
+    "usedAi": false
+  }
+}

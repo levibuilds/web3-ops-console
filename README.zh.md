@@ -1,89 +1,89 @@
-# Web3 Ops Console
+# Web3 Ops Console · 交易所运营工作台
 
-[English README](./README.md)
+[English](./README.md) · [案例说明](./docs/CASE_STUDY.md) · [验收记录](./docs/ACCEPTANCE.md)
 
-面向交易所/Web3 项目方运营团队的 AI 运营操作台：竞品情报、Web3 大事件、运营日报、活动情报库。
+**From Data to Action.** 将交易所公告、活动情报、竞品动态、搜索和运营日报集中到统一工作流。这是一个基于交易所运营场景构建的可运行产品案例。
 
-> 寻求 Web3 运营 / AI 运营相关机会。联系入口：[@levi2277999-gif](https://github.com/levi2277999-gif)
+> 数据仅供运营研究，不构成投资建议。项目没有可核实的客户数、用户数或商业效果数据。
 
-> 数据仅供运营研究，不构成投资建议。
+## Screenshots / 实际界面
 
-## 运营场景
+以下截图来自本地实际运行的只读公开数据快照。概念视觉与产品截图分开管理；当前仓库没有用户先前提到的品牌资源包。
+
+| Overview | Intelligence | Reports | Search |
+| --- | --- | --- | --- |
+| [查看](./docs/screenshots/overview-viewport-1440.png) | [查看](./docs/screenshots/intelligence-production-1440.png) | [查看](./docs/screenshots/reports-production-1440.png) | [查看](./docs/screenshots/search-production-1440.png) |
+
+![Web3 Ops Console 实际运行的 Overview](./docs/screenshots/overview-viewport-1440.png)
+
+[活动库](./docs/screenshots/campaigns-production-1440.png) · [手机布局](./docs/screenshots/overview-production-390.png)
+
+## Why / 为什么做
+
+交易所运营信息分散在公告、Listing、Campaign、市场事件和竞品页面里。查找来源、对照发布时间、整理活动和撰写日报通常跨多个页面完成。工作台把这些步骤集中起来，让运营人员能搜索、比较并回到来源核验。
+
+## Core Features / 核心功能
+
+- **Exchange Intelligence：**浏览已采集的交易所公告，按来源筛选并查看链接。
+- **Campaign Radar：**把收录的活动公告整理为可筛选的活动库。
+- **Exchange Comparison：**比较当前收录范围内各交易所的公告数量；数量不是市场份额或交易量。
+- **Search：**对公告、活动和事件做关键词检索；当前不是向量或语义搜索。
+- **Operations Brief：**根据已保存记录生成规则版运营简报。
+- **Alerts 与监控列表：**原有运营模式保留关键词命中、告警及配置入口；只读快照不发送通知。
+
+## Workflow / 工作流
 
 ```text
-盯竞品 -> 看大事件 -> 读日报 -> 扒活动
+Collect → Normalize → Classify → Search / Compare → Analyze → Operations Brief
 ```
 
-## 架构
+原有 Node 服务可以按需采集，并使用 SQLite 保存运营数据。公开展示用 JSON 快照，服务端只读，不启动自动采集，也不调用通知接口。
 
-```text
-交易所公告 / Web3 新闻 / CoinGecko / DefiLlama / X / Etherscan / 回调
-        -> 采集
-        -> 标准化
-        -> 分类
-        -> 告警
-        -> Web3大事件 / 运营日报 / 活动库 / 竞品情报
-```
+## AI Usage / AI 使用边界
 
-## 截图
+公告分类、检索、对比和本轮快照简报使用规则与数据处理。源码保留可选模型调用，用于标题翻译、日报润色与部分告警研判；需要单独配置服务端密钥。本轮公开快照**没有调用模型**，不能称为 AI 生成的日报。
 
-稍后补图：
+## Data Status / 数据状态
 
-- `docs/screenshots/web3-news.png`
-- `docs/screenshots/competitor-intel.png`
-- `docs/screenshots/daily-brief.png`
-- `docs/screenshots/campaign-library.png`
+**Operational Snapshot。** [快照文件](./public/production-snapshot.json)记录了 2026-09-23 22:40 UTC（曼谷时间 2026-09-24 05:40）的采集：Binance 20、Bitget 10、Bybit 3、OKX 1，共 34 条去重公告和 20 条结构化活动。每条收录公告保留原始标题、来源 URL、发布时间与抓取时间。OKX 当前链接到带日期的公告列表页，其余三个来源提供文章链接。
 
-## 功能
+源码配置了 20 个交易所来源，但本快照只统计上述 4 个有可核验记录的来源。通用网页抓取会把部分页面文字误判为公告，且可能把抓取时间当成发布时间，因此这些记录没有进入本快照。页面不宣称 24/7 实时运行；需要时可以重新启动采集。
 
-- Web3 大事件：每天自动汇总最重要的 20 条 Web3 新闻。
-- 20 所交易所公告聚合：覆盖 Binance、OKX、Bybit、Bitget 等主流平台。
-- 公告自动分类：新币上线、交易大赛、充值赠币、Launchpool、学习赚币、新手任务、合约与费率变更、维护、下架、其他。
-- 上币竞速表：对比同一代币在多所的上线时间，识别谁先上。
-- 关键词订阅：命中后生成站内运营告警。
-- 运营晨报：市场概况、20 所重点动态、大额链上异动、今日关注建议。
-- 活动情报库：保留中文活动标题、交易所、活动类型、涉及代币、时间和原文链接。
-- 舆情雷达：X/KOL 与品牌词监控，负面高热内容触发告警。
-- SQLite 持久化、GitHub Actions CI、Dockerfile、部署文档。
+## Tech Stack / 技术栈
 
-## 快速开始
+Node.js（要求 ≥20，本轮验证使用 22.23.1）、原生 HTTP 服务、浏览器 JavaScript/CSS、`better-sqlite3`、JSON 快照。项目没有 React/Next.js 迁移。
+
+## Run Locally / 本地运行
+
+已使用锁文件验证安装：
 
 ```bash
-npm install
-cp .env.example .env
-npm run dev
+npm ci
+HOST=127.0.0.1 PORT=4178 SNAPSHOT_MODE=1 npm run dev
 ```
 
-打开：
+打开 `http://127.0.0.1:4178/`。只读模式提供快照、搜索和已保存的规则简报；写入及同步请求返回 403，周报生成不可用。
 
-```text
-http://localhost:4173
+原有运营模式：
+
+```bash
+HOST=127.0.0.1 PORT=4173 npm run dev
 ```
 
-没有接口密钥时会明确显示模拟数据模式。
+没有密钥时从空记录开始。密钥只放在本地 `.env` 或服务端环境变量，参考 [.env.example](./.env.example)；不要提交 `.env`。显式的 `DEMO_MODE=1` 使用独立数据目录并禁止真实采集和通知，不是本 README 截图所用数据。
 
-## API
+## Project Context / 项目定位
 
-| 方法 | 路径 | 用途 |
-| --- | --- | --- |
-| `GET` | `/api/state` | 前端状态聚合 |
-| `POST` | `/api/sync` | 同步真实数据源 |
-| `POST` | `/api/sync-web3-news` | 同步 Web3 大事件 |
-| `GET` | `/api/web3-news` | 今日 Web3 大事件 |
-| `POST` | `/api/sync-exchanges` | 同步交易所公告 |
-| `GET` | `/api/exchange-announcements` | 已分类竞品公告 |
-| `GET` | `/api/listing-race` | 上币竞速表 |
-| `GET` | `/api/campaigns` | 活动情报库 |
-| `GET` | `/api/daily-report` | 24 小时运营晨报 |
-| `GET` | `/api/weekly-report` | 运营周报 |
-| `POST` | `/api/ingest` | 写入单条事件 |
+这是一个 **Web3 / Exchange Operations Product Case Study**：展示业务问题、信息架构、规则工作流与可运行实现。它不是持续在线服务，也没有在此宣称企业客户或业务成果。上币比较依据公告发布时间，不等于交易开放时间；未收录公告不代表交易所没有相关活动。
 
-## Roadmap
+## API 与验证
 
-- 补充截图和公开演示。
-- 从公告正文进一步解析活动起止时间。
-- 增强中文标题翻译和活动类型识别。
-- 针对品牌和地区扩展舆情词典。
+主要接口：`GET /api/state`、`GET /api/search`、`GET /api/campaigns`、`GET /api/daily-report`。运营模式另提供 `POST /api/sync`、`POST /api/sync-exchanges` 和告警/通知入口。详情见 [English README](./README.md) 和 [验收记录](./docs/ACCEPTANCE.md)。
+
+```bash
+npm run check
+npm test
+```
 
 ## License
 

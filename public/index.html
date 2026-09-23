@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Web3 Ops Console</title>
+    <meta name="description" content="Web3 Ops Console 将交易所公告、活动情报、运营日报与检索集中到统一工作台。" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
@@ -12,10 +14,11 @@
         <div class="brand">
           <div class="mark">W3</div>
           <div>
-            <h1>Ops Console</h1>
-            <p>Web3 运营操作台</p>
+            <h1>Web3 Ops Console</h1>
+            <p>FROM DATA TO ACTION.</p>
           </div>
         </div>
+        <p class="nav-caption">WORKSPACE</p>
         <nav>
           <button class="nav-item active" data-view="overview">总览</button>
           <button class="nav-item" data-view="web3news">Web3大事件</button>
@@ -29,22 +32,27 @@
           <button class="nav-item" data-view="pipeline">处理链路</button>
           <button class="nav-item" data-view="settings">设置</button>
         </nav>
-        <div class="connector-list" id="connectors"></div>
+        <div class="sidebar-foot">
+          <p class="nav-caption">DATA STATUS</p>
+          <div class="connector-list" id="connectors"></div>
+          <a href="https://github.com/levibuilds/web3-ops-console" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
       </aside>
 
       <main>
         <section class="toolbar">
           <div>
+            <p class="toolbar-kicker">WEB3 OPS / COMMAND CENTER</p>
             <h2 id="view-title">总览</h2>
-            <p id="view-subtitle">信号、评分和数据源状态。</p>
+            <p id="view-subtitle">交易所运营情报与工作流中枢</p>
             <p class="disclaimer" id="disclaimer">数据仅供研究，不构成投资建议。</p>
           </div>
           <div class="actions">
             <form id="global-search-form" class="global-search">
-              <input id="global-search-input" type="search" placeholder="搜索运营记忆库" />
+              <input id="global-search-input" type="search" placeholder="搜索公告、活动、事件与日报…" aria-label="搜索公告、活动和事件" />
               <button type="submit" class="secondary">搜索</button>
             </form>
-            <span id="mode-badge" class="mode-badge">模拟数据模式</span>
+            <span id="mode-badge" class="mode-badge">数据状态</span>
             <button id="refresh-btn" class="icon-btn" title="刷新">↻</button>
             <button id="sync-btn">同步真实数据</button>
             <button id="simulate-btn" class="secondary">生成模拟数据</button>
@@ -53,7 +61,41 @@
         <section id="global-search-results" class="search-results hidden"></section>
 
         <section class="view active" id="overview-view">
+          <section class="overview-hero">
+            <div class="hero-copy">
+              <span class="hero-eyebrow">EXCHANGE INTELLIGENCE / OPERATIONS</span>
+              <h2>把分散的信息，<br /><em>变成下一步行动。</em></h2>
+              <p>追踪公告与活动、比较竞品节奏、检索历史记录，并汇总运营简报。</p>
+              <div class="hero-actions"><button type="button" data-jump="exchanges">浏览竞品情报 ↗</button><button type="button" class="secondary" data-jump="daily">查看运营日报</button></div>
+            </div>
+            <div class="hero-status">
+              <span>OPERATIONAL SNAPSHOT</span>
+              <strong id="snapshot-time">等待数据</strong>
+              <small id="snapshot-summary">正在读取已保存的记录</small>
+              <div class="hero-signal" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </section>
           <div class="metrics" id="metrics"></div>
+          <div class="overview-grid">
+            <section class="panel overview-feed">
+              <div class="panel-head"><div><span class="section-label">01 / INTELLIGENCE FEED</span><h3>最新情报</h3></div><button class="text-action" data-jump="exchanges">查看全部 ↗</button></div>
+              <div id="overview-feed"></div>
+            </section>
+            <section class="panel overview-radar">
+              <div class="panel-head"><div><span class="section-label">02 / CAMPAIGN RADAR</span><h3>活动雷达</h3></div><button class="text-action" data-jump="campaigns">进入活动库 ↗</button></div>
+              <div id="overview-campaigns"></div>
+            </section>
+            <section class="panel overview-compare">
+              <div class="panel-head"><div><span class="section-label">03 / EXCHANGE WATCH</span><h3>交易所观察</h3></div><span class="panel-context">已收录公告数量</span></div>
+              <div id="overview-comparison"></div>
+            </section>
+            <section class="panel overview-brief">
+              <div class="panel-head"><div><span class="section-label">04 / OPERATIONS BRIEF</span><h3>从情报到简报</h3></div></div>
+              <p>基于已收录公告生成规则版运营简报；模型润色仅在配置凭证后可用。</p>
+              <button type="button" class="brief-link" data-jump="daily">打开运营日报 <span>↗</span></button>
+            </section>
+          </div>
+          <section class="flow-panel"><span class="section-label">INFORMATION FLOW</span><div><span>Collect</span><b>→</b><span>Normalize</span><b>→</b><span>Classify</span><b>→</b><span>Search</span><b>→</b><span>Brief</span></div></section>
           <div class="split">
             <section class="panel">
               <div class="panel-head">
@@ -195,7 +237,7 @@
           </div>
           <section class="panel listing-race-panel">
             <div class="panel-head">
-              <h3 id="listing-race-heading">上币竞速表</h3>
+              <h3 id="listing-race-heading">上币公告时间对比</h3>
             </div>
             <div class="table-wrap embedded">
               <table>
@@ -203,6 +245,7 @@
                 <tbody id="listing-race-table"></tbody>
               </table>
             </div>
+            <p class="disclaimer">仅比较已采集公告的发布时间；实际开放交易时间未知，未采集到公告不代表未上线。现货与合约需核对原文。</p>
           </section>
           <div class="exchange-grid" id="exchange-announcements"></div>
         </section>

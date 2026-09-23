@@ -33,7 +33,9 @@ test("critical alerts push Feishu interactive card and WeCom markdown payloads",
   const mockPort = await listen(mock);
   t.after(() => mock.close());
 
-  const port = 4193;
+  const probe = http.createServer();
+  const port = await listen(probe);
+  await new Promise((resolve) => probe.close(resolve));
   const child = spawn(process.execPath, ["src/server.mjs"], {
     cwd: process.cwd(),
     env: {

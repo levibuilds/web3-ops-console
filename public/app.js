@@ -52,7 +52,7 @@ const copy = {
     regulation: { heading: "监管动态雷达", empty: "暂无监管动态。同步新闻、公告或手动写入 SEC 诉讼等事件后会出现在这里。" },
     unlocks: { heading: "解锁日历", empty: "暂无未来30天解锁数据。数据源不可用时会自动降级为空状态。", week: "未来7天解锁分布" },
     campaigns: { heading: "活动情报库", allExchanges: "全部交易所", allTypes: "全部类型", empty: "暂无活动。同步交易所公告后会自动结构化入库。", calendar: "本周/下周活动分布", heads: ["交易所", "类型", "代币", "时间", "活动标题"] },
-    listingRace: "上币竞速表",
+    listingRace: "上币公告时间对比",
     frequency: "近30天活动频次对比",
     monitorCards: ["交易所源", "关键词订阅", "品牌词", "X 意见领袖"],
     alertsVisible: (count) => `${count} 条`,
@@ -78,7 +78,7 @@ const copy = {
     error: "异常",
     needsKey: "待配置",
     announcement: "公告",
-    listingRaceHeads: ["代币", "最先上线", "我所时差"],
+    listingRaceHeads: ["代币", "最早公告", "我所公告时差"],
     modes: { live_api: "实时接口", live: "实时", pro_api: "专业接口", public_api: "公开接口", public_api_ready: "公开接口就绪", needs_key: "待配置密钥", simulated: "模拟" },
     monitorOn: "运行",
     monitorWait: "等待",
@@ -101,6 +101,9 @@ const samplePayload = {
 
 document.addEventListener("DOMContentLoaded", () => {
   bindNavigation();
+  document.querySelectorAll("[data-jump]").forEach((button) => button.addEventListener("click", () => {
+    document.querySelector(`.nav-item[data-view="${button.dataset.jump}"]`)?.click();
+  }));
   document.getElementById("refresh-btn").addEventListener("click", load);
   document.getElementById("sync-btn").addEventListener("click", syncLive);
   document.getElementById("sync-exchanges-btn").addEventListener("click", syncExchanges);
@@ -336,6 +339,7 @@ function render() {
   if (!state.data) return;
   updateStaticText();
   renderMetrics();
+  renderOverview();
   renderMonitorStatus();
   renderWeb3News();
   renderRegulation();
@@ -356,10 +360,13 @@ function updateStaticText() {
   const text = t();
   document.documentElement.lang = "zh-CN";
   document.getElementById("disclaimer").textContent = text.disclaimer;
-  const live = (state.data.connectors || []).some((connector) => connector.mode === "live_api" || connector.mode === "live" || connector.mode === "pro_api");
+  const mode = state.data.dataMode || "empty";
+  const live = mode === "live";
   const badge = document.getElementById("mode-badge");
-  badge.textContent = live ? text.liveMode : text.demoMode;
-  badge.classList.toggle("live", live);
+  badge.textContent = { demo: "演示数据模式", mixed: "混合数据模式", live: "已采集数据", snapshot: "Operational Snapshot", empty: "暂无采集数据" }[mode];
+  badge.classList.toggle("live", live || mode === "snapshot");
+  for (const id of ["sync-btn", "sync-exchanges-btn", "sync-news-btn", "sync-unlocks-btn"]) document.getElementById(id).hidden = mode === "demo" || mode === "snapshot";
+  document.getElementById("simulate-btn").hidden = mode !== "demo" || Boolean(window.SITES_REVIEW);
   document.getElementById("sync-btn").textContent = text.buttons.sync;
   document.getElementById("simulate-btn").textContent = text.buttons.simulate;
   document.getElementById("sync-exchanges-btn").textContent = text.buttons.syncExchanges;
@@ -387,8 +394,12 @@ function updateStaticText() {
   document.getElementById("web3news-heading").textContent = text.web3news.heading;
   document.getElementById("regulation-heading").textContent = text.regulation.heading;
   document.getElementById("unlocks-heading").textContent = text.unlocks.heading;
-  document.getElementById("generate-report-btn").textContent = text.daily.generate;
+  document.getElementById("generate-report-btn").textContent = mode === "snapshot" ? "查看快照简报" : window.SITES_REVIEW ? "查看演示日报快照" : text.daily.generate;
   document.getElementById("generate-weekly-btn").textContent = text.daily.weekly;
+  document.getElementById("generate-weekly-btn").hidden = mode === "snapshot";
+  document.getElementById("watchlist-form").querySelector("button[type=submit]").hidden = mode === "snapshot";
+  document.getElementById("settings-form").querySelector("button[type=submit]").hidden = mode === "snapshot";
+  document.getElementById("manual-form").hidden = mode === "snapshot";
   document.getElementById("copy-report-btn").textContent = text.daily.copy;
   document.getElementById("campaigns-heading").textContent = text.campaigns.heading;
   ["campaign-th-exchange", "campaign-th-type", "campaign-th-token", "campaign-th-time", "campaign-th-title"].forEach((id, index) => {
@@ -397,26 +408,51 @@ function updateStaticText() {
   document.getElementById("listing-race-heading").textContent = text.listingRace;
   document.getElementById("settings-heading").textContent = "设置";
   if (!document.getElementById("daily-report-preview").textContent.trim()) {
-    document.getElementById("daily-report-preview").textContent = text.daily.empty;
+    document.getElementById("daily-report-preview").textContent = mode === "snapshot" ? "点击查看基于已收录公告生成的规则版快照简报。" : window.SITES_REVIEW ? "点击查看按演示数据生成的静态日报快照。" : text.daily.empty;
   }
   document.querySelectorAll(".nav-item").forEach((button) => {
     button.textContent = text.nav[button.dataset.view];
   });
   document.getElementById("view-title").textContent = text.titles[state.currentView][0];
-  document.getElementById("view-subtitle").textContent = text.titles[state.currentView][1];
+  document.getElementById("view-subtitle").textContent = state.currentView === "overview" ? "交易所运营情报与工作流中枢" : text.titles[state.currentView][1];
 }
 
 function renderMetrics() {
-  const metrics = state.data.metrics;
+  const announcements = state.data.exchangeAnnouncements || [];
+  const campaigns = state.data.campaigns || [];
+  const sources = new Set(announcements.map((item) => item.exchangeId).filter(Boolean));
+  const dates = announcements.map((item) => item.publishedAt).filter(Boolean).sort();
   const cards = [
-    [t().metrics[0], metrics.ingested],
-    [t().metrics[1], metrics.normalized],
-    [t().metrics[2], metrics.alerts],
-    [t().metrics[3], state.data.alerts.filter((alert) => alert.status === "open").length]
+    ["已收录公告", announcements.length, "可检索的交易所记录"],
+    ["有记录的交易所", sources.size, "按当前快照统计"],
+    ["结构化活动", campaigns.length, "从收录公告提取"],
+    ["最早公告日期", dates.length ? dates[0].slice(0, 10) : "—", "已收录范围"]
   ];
   document.getElementById("metrics").innerHTML = cards
-    .map(([label, value]) => `<article class="metric"><span>${label}</span><strong>${value}</strong></article>`)
+    .map(([label, value, detail]) => `<article class="metric"><span>${label}</span><strong>${escapeHtml(value)}</strong><small>${detail}</small></article>`)
     .join("");
+}
+
+function renderOverview() {
+  const announcements = state.data.exchangeAnnouncements || [];
+  const campaigns = state.data.campaigns || [];
+  const snapshotAt = state.data.snapshotAt;
+  document.getElementById("snapshot-time").textContent = snapshotAt ? `Last synchronized · ${formatTime(snapshotAt)}` : "尚无采集时间";
+  document.getElementById("snapshot-summary").textContent = `${new Set(announcements.map((item) => item.exchangeId)).size} 个来源有记录 · ${announcements.length} 条公告`;
+  document.getElementById("overview-feed").innerHTML = announcements.slice(0, 5).map((item) => `
+    <article class="feed-row">
+      <div><span class="feed-source">${escapeHtml(item.exchange)}</span><span class="feed-category">${escapeHtml(item.opsCategory || item.category || "公告")}</span></div>
+      <h4>${item.url ? `<a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title)}</a>` : escapeHtml(item.title)}</h4>
+      <time>${item.publishedAt ? formatTime(item.publishedAt) : "发布时间未提供"}</time>
+    </article>`).join("") || '<div class="empty-state"><strong>尚无收录记录</strong><p>采集完成后，最近的交易所公告将在这里出现。</p></div>';
+  document.getElementById("overview-campaigns").innerHTML = campaigns.slice(0, 3).map((item) => `
+    <article class="radar-row"><span>${escapeHtml(item.exchange)}</span><div><strong>${escapeHtml(item.title)}</strong><small>${escapeHtml(item.campaignType || "活动")} · ${formatTime(item.publishedAt)}</small></div></article>`).join("") || '<div class="empty-state"><strong>暂无活动更新</strong><p>当前快照中没有可结构化的活动记录。</p></div>';
+  const counts = new Map();
+  announcements.forEach((item) => counts.set(item.exchange, (counts.get(item.exchange) || 0) + 1));
+  const rows = [...counts].sort((a, b) => b[1] - a[1]).slice(0, 6);
+  const max = Math.max(1, ...rows.map((row) => row[1]));
+  document.getElementById("overview-comparison").innerHTML = rows.map(([name, count]) => `
+    <div class="compare-row"><span>${escapeHtml(name)}</span><div class="compare-track"><i style="width:${(count / max) * 100}%"></i></div><strong>${count}</strong></div>`).join("") || '<div class="empty-state"><strong>尚无交易所对比</strong><p>收录公告后可按来源查看数量。</p></div>';
 }
 
 function renderMonitorStatus() {
@@ -424,7 +460,7 @@ function renderMonitorStatus() {
   const sources = state.data.exchangeSources || [];
   const announcements = state.data.exchangeAnnouncements || [];
   const activeSourceIds = new Set(announcements.map((item) => item.exchangeId).filter(Boolean));
-  const liveConnectors = sources.filter((source) => source.status !== "error").length;
+  const liveConnectors = sources.filter((source) => source.status === "ready").length;
   const trackedExchanges = sources
     .slice(0, 8)
     .map((source) => `${source.name}:${activeSourceIds.has(source.id) ? t().monitorOn : t().monitorWait}`)
@@ -461,7 +497,7 @@ function renderWeb3News() {
       </article>
     `
       )
-      .join("") || `<div class="empty action-empty"><p>${t().web3news.empty}</p><button type="button" onclick="syncWeb3News()">${t().buttons.syncNews}</button></div>`;
+      .join("") || (state.data.dataMode === "snapshot" ? '<div class="empty-state"><strong>本次快照未收录新闻</strong><p>此模块需要单独核验新闻来源后再展示。</p></div>' : `<div class="empty action-empty"><p>${t().web3news.empty}</p><button type="button" onclick="syncWeb3News()">${t().buttons.syncNews}</button></div>`);
 }
 
 function renderRegulation() {
@@ -474,7 +510,8 @@ function renderRegulation() {
       <article class="news-item ${item.severity === "critical" ? "critical-border" : ""}">
         <span class="news-rank">${escapeHtml(item.region || "OTHER")}</span>
         <div>
-          <h4><a href="${escapeHtml(item.url || "#")}" target="_blank" rel="noreferrer">${escapeHtml(item.title)}</a></h4>
+          <h4>${item.url ? `<a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(item.title)}</a>` : escapeHtml(item.title)}</h4>
+          ${item.url ? "" : '<p class="empty">演示数据，无原文链接</p>'}
           <p>${escapeHtml(item.summary || item.source || "")} · ${item.severity === "critical" ? "高危" : "关注"}</p>
           <div class="news-meta"><span>${formatTime(item.observedAt)}</span><span>${item.kind === "announcement" ? "公告" : item.kind === "demo" ? "演示样例" : "事件"}</span></div>
         </div>
@@ -502,13 +539,14 @@ function renderUnlocks() {
       <article class="news-item ${item.isLarge ? "critical-border" : ""}">
         <span class="news-rank">${escapeHtml(item.symbol || "-")}</span>
         <div>
-          <h4><a href="${escapeHtml(item.url || "#")}" target="_blank" rel="noreferrer">${escapeHtml(item.project || item.token || "解锁事件")}</a></h4>
+          <h4>${item.url ? `<a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(item.project || item.token || "解锁事件")}</a>` : escapeHtml(item.project || item.token || "解锁事件")}</h4>
+          ${item.url ? "" : '<p class="empty">演示数据，无原文链接</p>'}
           <p>${escapeHtml(item.category || "解锁")} · ${formatUsd(item.valueUsd || 0)} · ${item.percentOfSupply ? `${Number(item.percentOfSupply).toFixed(2)}%` : "占比未知"}</p>
           <div class="news-meta"><span>${formatTime(item.unlockDate)}</span><span>${item.isDemo ? "演示样例" : item.isLarge ? "大额解锁" : "普通解锁"}</span></div>
         </div>
       </article>`
       )
-      .join("") || `<div class="empty action-empty"><p>${t().unlocks.empty}</p><button type="button" onclick="syncUnlocks()">${t().buttons.syncUnlocks}</button></div>`;
+      .join("") || (state.data.dataMode === "snapshot" ? '<div class="empty-state"><strong>本次快照无解锁数据</strong><p>已保留采集入口，当前展示不补造记录。</p></div>' : `<div class="empty action-empty"><p>${t().unlocks.empty}</p><button type="button" onclick="syncUnlocks()">${t().buttons.syncUnlocks}</button></div>`);
 }
 
 function renderAlerts() {
@@ -533,7 +571,7 @@ function renderAlerts() {
         </article>
       `
       )
-      .join("") || `<div class="empty action-empty"><p>${t().noAlerts}</p><button type="button" onclick="simulate()">${t().buttons.simulate}</button></div>`;
+      .join("") || (state.data.dataMode === "snapshot" ? '<div class="empty-state"><strong>本次快照无优先告警</strong><p>没有符合当前规则的高优先级事件。</p></div>' : `<div class="empty action-empty"><p>${t().noAlerts}</p><button type="button" onclick="simulate()">${t().buttons.simulate}</button></div>`);
 }
 
 function renderEvents() {
@@ -610,7 +648,7 @@ function renderCampaigns() {
         <td>${escapeHtml(item.campaignType)}</td>
         <td>${escapeHtml((item.tokens || []).join(", ") || "-")}</td>
         <td>${escapeHtml(formatCampaignTime(item))}</td>
-        <td><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(item.title)}</a></td>
+        <td>${item.url ? `<a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(item.title)}</a>` : escapeHtml(item.title)}</td>
       </tr>`;
         }
       )
@@ -666,6 +704,14 @@ function eventTypeLabel(type) {
 }
 
 function renderConnectors() {
+  if (state.data.dataMode === "snapshot") {
+    const counts = new Map();
+    (state.data.exchangeAnnouncements || []).forEach((item) => counts.set(item.exchangeId, (counts.get(item.exchangeId) || 0) + 1));
+    document.getElementById("connectors").innerHTML = (state.data.exchangeSources || [])
+      .filter((source) => counts.has(source.id))
+      .map((source) => `<div class="connector"><strong>${escapeHtml(source.name)}</strong><span>已收录 ${counts.get(source.id)} 条公告</span></div>`).join("");
+    return;
+  }
   document.getElementById("connectors").innerHTML = state.data.connectors
     .map(
       (connector) => `
@@ -682,6 +728,7 @@ function renderConnectors() {
 function connectorStatus(connector) {
   if (connector.status === "error") return t().error;
   if (connector.mode === "needs_key") return t().needsKey;
+  if (connector.status !== "ready") return "未验证";
   return t().ready;
 }
 
@@ -705,7 +752,8 @@ function renderExchangeAnnouncements() {
           <span class="exchange-name">${escapeHtml(item.exchange)}</span>
           <span class="score">${Math.round(item.activityScore || 0)}</span>
         </div>
-        <h4><a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(item.title)}</a></h4>
+        <h4>${item.url ? `<a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(item.title)}</a>` : escapeHtml(item.title)}</h4>
+        ${item.url ? "" : '<p class="empty">演示数据，无原文链接</p>'}
         <div class="exchange-meta">
           <span>${escapeHtml(item.category || t().announcement)}</span>
           <span>${formatTime(item.publishedAt)}</span>
@@ -732,7 +780,7 @@ function renderListingRace() {
       .map((row) => {
         const cells = sources.map((source) => {
           const hit = row.exchanges.find((item) => item.exchangeId === source.id);
-          return `<td class="${row.isNew24h && hit?.publishedAt ? "fresh" : ""}">${hit?.publishedAt ? formatTime(hit.publishedAt) : "-"}</td>`;
+          return `<td class="${row.isNew24h && hit?.publishedAt ? "fresh" : ""}">${hit?.publishedAt ? formatTime(hit.publishedAt) : "未采集到公告"}</td>`;
         });
         const lagClass = row.lagDays == null ? "lag-missing" : row.lagDays <= 0 ? "lag-lead" : "lag-behind";
         return `<tr><td>${escapeHtml(row.token)}</td><td>${escapeHtml(row.firstExchange || "-")}</td><td class="${lagClass}">${escapeHtml(row.lagLabel || "-")}</td>${cells.join("")}</tr>`;
@@ -784,7 +832,7 @@ function renderSearchResults(groups) {
     .map(([key, rows]) => {
       const items = (rows || [])
         .slice(0, 8)
-        .map((item) => `<li><a href="${escapeHtml(item.url || "#")}" target="_blank" rel="noreferrer">${escapeHtml(item.title)}</a><span>${escapeHtml(item.source || "")} · ${formatTime(item.observedAt)}</span></li>`)
+        .map((item) => `<li>${item.url ? `<a href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">${escapeHtml(item.title)}</a>` : escapeHtml(item.title)}<span>${escapeHtml(item.source || "")} · ${formatTime(item.observedAt)}${item.url ? " · 原文 ↗" : ""}</span>${item.summary ? `<span>${escapeHtml(item.summary)}</span>` : ""}</li>`)
         .join("");
       return `<div><h4>${labels[key] || key}</h4><ul>${items || "<li>无结果</li>"}</ul></div>`;
     })

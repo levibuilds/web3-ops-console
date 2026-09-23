@@ -1,20 +1,40 @@
-# web3-ops-console 
+# Web3 Ops Console
 
-[中文文档](./README.zh.md)
+[中文文档](./README.zh.md) · [Case study](./docs/CASE_STUDY.md) · [Acceptance record](./docs/ACCEPTANCE.md)
 
-AI-powered operations console for Web3/exchange ops teams: competitor intel, regulatory radar, AI daily briefings & campaign library.
+**From Data to Action.** An exchange operations workspace for collecting announcements, classifying campaigns, comparing sources, searching records, and drafting operations briefs.
 
-> Seeking Web3 Operations / AI Operations opportunities. Contact: [@levi2277999-gif](https://github.com/levi2277999-gif)
+Built as a functional product case that turns exchange operations experience into a browsable workflow. Contact: [@levibuilds](https://github.com/levibuilds).
 
 > Data is for operations research only and does not constitute investment advice.
 
-## Why This Exists
+## Product
 
-Exchange and Web3 operations teams spend too much time watching competitors, reading fragmented announcements, checking regulatory news, tracking campaigns, and writing daily briefs. This console compresses those daily workflows into one focused operating surface.
+Exchange and Web3 operations teams work across fragmented competitor announcements, campaign updates, market events, and daily reports. The console brings these tasks into one operating surface.
 
 ```text
-Watch competitors -> Scan Web3 events -> Read daily brief -> Mine campaigns -> Act
+Collect -> Normalize -> Classify -> Search -> Analyze -> Brief
 ```
+
+## Screenshots
+
+Actual local product screens using the verified public-data snapshot captured on 2026-09-24:
+
+| Overview | Intelligence | Reports | Search | Mobile |
+| --- | --- | --- | --- | --- |
+| [Open](./docs/screenshots/overview-viewport-1440.png) | [Open](./docs/screenshots/intelligence-production-1440.png) | [Open](./docs/screenshots/reports-production-1440.png) | [Open](./docs/screenshots/search-production-1440.png) | [Open](./docs/screenshots/overview-production-390.png) |
+
+![Web3 Ops Console overview](./docs/screenshots/overview-viewport-1440.png)
+
+The read-only [production snapshot](./public/production-snapshot.json) contains **34 announcements and 20 structured campaigns from 4 exchanges**: Binance, Bitget, Bybit, and OKX. Each included announcement has an original title, source URL, publication timestamp, and fetch timestamp. OKX currently links to its dated announcement listing page; the other three collectors provide article URLs. The snapshot timestamp is stored in the JSON and shown in the UI. It does not imply continuous collection. The other configured exchange sources were not counted as successfully indexed.
+
+## Features
+
+- **Overview:** source-backed counts, recent intelligence, campaign radar, exchange comparison, and a visible snapshot timestamp.
+- **Intelligence and campaigns:** browsable, filterable announcements and extracted activities with links to source pages.
+- **Operations Brief:** a rule-based summary of saved records. Model polishing is optional and was not used for this snapshot.
+- **Search:** keyword search across the saved announcements, campaigns, and events.
+- **Operational mode:** optional collection, SQLite persistence, watchlists, alerts, webhooks, and model integrations remain in the existing Node service.
 
 ## Architecture
 
@@ -24,58 +44,41 @@ Exchange announcements / Web3 news / CoinGecko / DefiLlama / X / Etherscan / Web
         -> normalize
         -> classify
         -> alert
-        -> Web3 events / regulatory radar / AI daily brief / campaign library / competitor intel
-        -> SQLite memory layer
+        -> Web3 events / regulatory radar / rules brief / campaign library / competitor intel
+        -> SQLite persistence (operational mode)
+        -> exported JSON (read-only showcase mode)
 ```
 
-## Screenshots
+## Data Flow
 
-### Web3 Events
+The verified snapshot uses the project's existing Binance, Bybit, and Bitget announcement APIs plus OKX's dated announcement page. Generic homepage text extraction can misidentify page text and assign fetch time as publication time, so its records were excluded from this snapshot. Export with `node scripts/export-production-snapshot.mjs http://127.0.0.1:4177` after running a local collector with `TRUSTED_SOURCES_ONLY=1`.
 
-![Web3 Events](./docs/screenshots/web3-news.png)
+## AI Usage
 
-### Competitor Intel
+Classification, comparison, keyword search, and the saved snapshot brief use rules and data processing. Optional server-side model calls can translate titles, polish live-mode briefs, and assist with selected alerts. This snapshot did not call a model.
 
-![Competitor Intel](./docs/screenshots/competitor-intel.png)
+## Data Status
 
-### Daily Brief
+**Operational Snapshot.** The repository includes a historical public-data snapshot; collection can be restarted when required. It is not 24/7 monitoring. The saved timestamp and per-record source, publication time, and fetch time are in [production-snapshot.json](./public/production-snapshot.json).
 
-![Daily Brief](./docs/screenshots/daily-brief.png)
+## Local Development
 
-### Campaign Library
-
-![Campaign Library](./docs/screenshots/campaign-library.png)
-
-## Features
-
-- **Web3 events**: automatically collects and ranks the top daily Web3 news items.
-- **20-exchange competitor intel**: tracks Binance, OKX, Bybit, Bitget, KuCoin, Gate, MEXC, HTX, Coinbase, Kraken and more.
-- **Announcement classification**: listings, campaigns, trading competitions, deposit rewards, Launchpool, learn-and-earn, new user tasks, contracts/fees, maintenance, delistings, regulation, and other.
-- **Listing race table**: compares when exchanges list the same token and highlights the first mover.
-- **My exchange benchmark**: select your own exchange and see listing lag, campaign frequency comparison, and benchmark reminders in the daily report.
-- **Regulatory radar**: tags SEC/SFC/MAS/FCA and other regulatory events by region, with critical alerts for lawsuits, bans, fines, and penalties.
-- **Campaign library**: structured campaign records with exchange, type, token, date, title, and source link.
-- **AI daily briefing**: market overview, key exchange updates, regulatory alerts, benchmark reminders, large on-chain moves, unlock calendar, and daily focus items.
-- **Unlock calendar**: tracks upcoming token unlocks and flags large unlock events.
-- **Global search**: searches announcements, campaigns, and events as an operations memory layer.
-- **Push integrations**: Telegram, Feishu, WeCom, and Discord alert delivery.
-- **Deployment-ready base**: SQLite persistence, Node test suite, GitHub Actions CI, Dockerfile, and deployment guide.
-
-## Quick Start
+Read-only showcase, with no automatic collection, notifications, or writes:
 
 ```bash
-npm install
-cp .env.example .env
-npm run dev
+npm ci
+HOST=127.0.0.1 PORT=4178 SNAPSHOT_MODE=1 npm run dev
 ```
 
-Open:
+Operational mode retains the original local behavior and its own SQLite data directory:
 
-```text
-http://localhost:4173
+```bash
+HOST=127.0.0.1 PORT=4173 npm run dev
 ```
 
-The app runs in demo mode without API keys.
+Open `http://127.0.0.1:4178/` for the read-only showcase, or `http://127.0.0.1:4173/` for operational mode.
+
+Without keys, operational mode starts with empty local records. To load isolated demonstration records, explicitly run `DEMO_MODE=1 DATA_DIR=/path/to/separate-demo-data HOST=127.0.0.1 npm run dev`. The showcase screenshots above use the separate public-data snapshot.
 
 ## Environment
 
@@ -111,6 +114,16 @@ DISCORD_WEBHOOK_URL=            # optional push
 | `GET` | `/api/weekly-report` | Weekly operations report |
 | `GET` | `/api/search` | Search announcements, campaigns, and events |
 | `POST` | `/api/ingest` | Ingest one event |
+
+In `SNAPSHOT_MODE=1`, write routes return 403; the saved daily brief and keyword search remain available. Weekly generation is unavailable in this mode.
+
+## Tech Stack
+
+Node.js 20+ (validated with 22.23.1), native HTTP server, browser JavaScript/CSS, SQLite via `better-sqlite3`, and a JSON export for the read-only snapshot.
+
+## Project Context
+
+This is a functional product case based on exchange operations workflows, not a claim of 24/7 live monitoring or verified business outcomes. Announcement counts measure this collection only. Listing comparisons use announcement publication times, not trading-open times. No model key is required to browse the snapshot or read its rule-based brief.
 
 ## Validation
 
