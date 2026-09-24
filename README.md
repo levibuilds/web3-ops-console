@@ -26,7 +26,11 @@ Actual local product screens using the verified public-data snapshot captured on
 
 ![Web3 Ops Console overview](./docs/screenshots/overview-viewport-1440.png)
 
-The read-only [production snapshot](./public/production-snapshot.json) contains **34 announcements and 20 structured campaigns from 4 exchanges**: Binance, Bitget, Bybit, and OKX. Each included announcement has an original title, source URL, publication timestamp, and fetch timestamp. OKX currently links to its dated announcement listing page; the other three collectors provide article URLs. The snapshot timestamp is stored in the JSON and shown in the UI. It does not imply continuous collection. The other configured exchange sources were not counted as successfully indexed.
+<!-- SNAPSHOT_COUNTS_START -->
+The current [production snapshot](./public/production-snapshot.json) contains **34 announcements from 4 verified exchange sources, 20 campaign records, 17 structured**; collected at 2026-09-23 22:40 UTC.
+<!-- SNAPSHOT_COUNTS_END -->
+
+Each included announcement has an original title, source URL, publication timestamp, and fetch timestamp. OKX currently links to its dated announcement listing page; the other three collectors provide article URLs. The snapshot timestamp is stored in the JSON and shown in the UI. It does not imply continuous collection. The other configured exchange sources were not counted as successfully indexed.
 
 ## Features
 
@@ -60,6 +64,14 @@ Classification, comparison, keyword search, and the saved snapshot brief use rul
 ## Data Status
 
 **Operational Snapshot.** The repository includes a historical public-data snapshot; collection can be restarted when required. It is not 24/7 monitoring. The saved timestamp and per-record source, publication time, and fetch time are in [production-snapshot.json](./public/production-snapshot.json).
+
+## Refresh Snapshot
+
+Run `npm run refresh-snapshot` to start a temporary local collector, synchronize the four trusted exchange sources, validate the results, and atomically replace the saved JSON. Failed validation keeps the previous snapshot. The [manual GitHub Action](./.github/workflows/refresh-snapshot.yml) offers the same on-demand path and creates a commit only when files change; it has no schedule.
+
+## Deployment
+
+The portfolio showcase is a static read-only build: `npm run build:showcase`. It reads the JSON directly in the browser and needs no server, SQLite writer, model key, notifications, or automatic collection. The full operational Node service remains available separately. See [deployment notes](./deploy.md).
 
 ## Local Development
 
@@ -131,13 +143,6 @@ This is a functional product case based on exchange operations workflows, not a 
 npm run check
 npm test
 ```
-
-## Roadmap
-
-- Add public hosted demo.
-- Improve extraction of campaign dates from long-form announcement pages.
-- Expand regional regulatory dictionaries.
-- Add richer benchmark analytics by exchange category and region.
 
 ## License
 

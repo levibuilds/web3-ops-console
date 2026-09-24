@@ -1,6 +1,7 @@
-import { writeFile } from "node:fs/promises";
+import { rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { validateProductionSnapshot } from "./snapshot-validation.mjs";
 
 const endpoint = process.argv[2] || "http://127.0.0.1:4177";
 const url = new URL(endpoint);
@@ -53,7 +54,7 @@ const report = {
 
 ## Executive Summary
 
-已收录 ${announcements.length} 条公告，来自 ${sourceIds.size} 个有记录的交易所；结构化活动 ${campaigns.length} 条。
+已收录 ${announcements.length} 条公告，来自 ${sourceIds.size} 个有记录的交易所；活动记录 ${campaigns.length} 条，其中 ${campaigns.filter((item) => item.structured === 1 || item.structured === true).length} 条已结构化。
 
 ## Important Listings
 
@@ -84,5 +85,9 @@ ${lines(recentCampaigns)}
   usedAi: false
 };
 const file = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "public", "production-snapshot.json");
-await writeFile(file, JSON.stringify({ provenance: { snapshot_at: snapshotAt, trusted_source_ids: [...sourceIds], announcement_count: announcements.length, campaign_count: campaigns.length }, state: cleanState, report }, null, 2) + "\n");
+const payload = { provenance: { snapshot_at: snapshotAt, trusted_source_ids: [...sourceIds], announcement_count: announcements.length, campaign_count: campaigns.length, structured_campaign_count: campaigns.filter((item) => item.structured === 1 || item.structured === true).length }, state: { ...cleanState, connectors: (state.connectors || []).map((item) => ({ ...item, status: "unverified", mode: "not_configured", message: "", checkedAt: "" })) }, report };
+validateProductionSnapshot(payload);
+const temporary = `${file}.${process.pid}.tmp`;
+await writeFile(temporary, JSON.stringify(payload, null, 2) + "\n");
+await rename(temporary, file);
 console.log(JSON.stringify({ file, snapshotAt, sources: [...sourceIds], announcements: announcements.length, campaigns: campaigns.length }));

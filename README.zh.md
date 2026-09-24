@@ -45,9 +45,21 @@ Collect → Normalize → Classify → Search / Compare → Analyze → Operatio
 
 ## Data Status / 数据状态
 
-**Operational Snapshot。** [快照文件](./public/production-snapshot.json)记录了 2026-09-23 22:40 UTC（曼谷时间 2026-09-24 05:40）的采集：Binance 20、Bitget 10、Bybit 3、OKX 1，共 34 条去重公告和 20 条结构化活动。每条收录公告保留原始标题、来源 URL、发布时间与抓取时间。OKX 当前链接到带日期的公告列表页，其余三个来源提供文章链接。
+<!-- SNAPSHOT_COUNTS_START -->
+**Operational Snapshot。** [快照文件](./public/production-snapshot.json)当前记录 34 条去重公告、4 个已验证来源、20 条活动记录，其中 17 条完成结构化识别；采集时间为 2026-09-23 22:40 UTC。
+<!-- SNAPSHOT_COUNTS_END -->
+
+每条收录公告保留原始标题、来源 URL、发布时间与抓取时间。OKX 当前链接到带日期的公告列表页，其余三个来源提供文章链接。
 
 源码配置了 20 个交易所来源，但本快照只统计上述 4 个有可核验记录的来源。通用网页抓取会把部分页面文字误判为公告，且可能把抓取时间当成发布时间，因此这些记录没有进入本快照。页面不宣称 24/7 实时运行；需要时可以重新启动采集。
+
+## Refresh Snapshot / 按需更新
+
+`npm run refresh-snapshot` 会启动临时采集服务、同步四个可信来源、核验无演示记录后原子替换快照。失败时保留旧文件。[GitHub 手动工作流](./.github/workflows/refresh-snapshot.yml)可按需运行，不设定时任务；内容未变化时不提交。
+
+## Deployment / 部署
+
+公开展示版由 `npm run build:showcase` 生成静态只读页面，在浏览器直接读取 JSON，无需 SQLite 写入、模型密钥、真实通知或自动采集。完整 Node 运营服务仍保留在源码中。参见[部署说明](./deploy.md)。
 
 ## Tech Stack / 技术栈
 

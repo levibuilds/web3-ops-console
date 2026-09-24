@@ -36,7 +36,7 @@
 | Overview | PASS | 本地首页 HTTP 200，实际运行截图；显示来源数量、公告数量和快照时间。 |
 | Search | PASS | `/api/search` HTTP 200，浏览器搜索交互及截图已核对。 |
 | Reports | PASS | `/api/daily-report` HTTP 200；这是已保存记录的规则版快照简报，不是模型生成。 |
-| Data snapshot | PASS | `/api/state` HTTP 200，34 条公告、20 条活动，模式为 `snapshot`；同步 POST 返回 403。 |
+| Data snapshot | PASS | `/api/state` HTTP 200，34 条公告、20 条活动记录（17 条已结构化），模式为 `snapshot`；同步 POST 返回 403。 |
 | Assets | PASS / 部分缺失 | 实际产品截图及临时 W3 favicon 可访问；指定品牌资源包的四张 PNG 本机未找到，正式 Logo 未验收。 |
 | README | PASS | 英文和中文 README 公开原始链接 HTTP 200，案例、截图相对路径可访问。 |
 | Mobile | PASS | 390/360 像素宽度浏览器布局已检查，无页面横向溢出；390 像素截图已保存。 |
@@ -47,8 +47,8 @@
 ## Data
 
 - [公开快照](../public/production-snapshot.json)采集时间：`2026-09-23T22:40:29.339Z`（曼谷时间 2026-09-24 05:40）。
-- 来源：项目原有 Binance、Bitget、Bybit 公告 API，以及 OKX 带日期的公告列表页。去重后 Binance 20、Bitget 10、Bybit 3、OKX 1；从已收录公告整理 20 条活动。原始标题、来源 URL、发布时间、抓取时间保留在数据中。
-- 公开快照**不含 mock 记录**；单独的 [`site-demo-state.json`](./site-demo-state.json) 是显式标注的演示样例，未作为本次 README 的真实数据证据。
+- 来源：项目原有 Binance、Bitget、Bybit 公告 API，以及 OKX 带日期的公告列表页。去重后 Binance 20、Bitget 10、Bybit 3、OKX 1；从已收录公告整理 20 条活动记录，其中 17 条完成结构化识别。原始标题、来源 URL、发布时间、抓取时间保留在数据中。
+- 公开快照**不含 mock 记录**；单独的 [`site-demo-state.json`](./archive/site-demo-state.json) 是显式标注的演示样例，未作为本次 README 的真实数据证据。
 - 当前快照不会持续实时更新。源码配置 20 个交易所来源，不等于 20 个已验证成功采集。通用网页抓取和新闻兜底结果因识别/时间问题没有进入公开快照。
 
 ## Security
@@ -83,4 +83,4 @@
 - 用户之前提供的视觉资源包在当前机器未找到，因此真实品牌 Logo、emblem、icon pack、hero concept 尚未入库；当前 W3 图标是临时占位。
 - 此次完成 GitHub 源码发布，**未完成 Sites 或其他公网服务部署**。本机运行地址不能用于远程访问。
 - 真实模型问答、真实通知投递、持续调度和全部 20 个配置来源的稳定采集未通过本轮验收；不能据此宣称 24/7 实时运行。
-- 旧版 [演示模式审计](./web3-ops-console-audit.md) 与 [本地展示记录](./job-showcase-report.md) 是历史过程文件；当前公开状态以本文件及主分支代码为准。
+- 旧版 [演示模式审计](./archive/web3-ops-console-audit.md) 与 [本地展示记录](./archive/job-showcase-report.md) 是历史过程文件；当前公开状态以本文件及主分支代码为准。

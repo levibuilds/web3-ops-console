@@ -1,7 +1,7 @@
 {
   "name": "web3-ops-console",
   "version": "0.1.0",
-  "description": "AI-powered operations console for Web3/exchange ops teams: competitor intel, regulatory radar, AI daily briefings and campaign library.",
+  "description": "A Web3 exchange operations intelligence console for announcements, campaigns, search, comparison and operations briefs.",
   "type": "module",
   "repository": {
     "type": "git",
@@ -20,7 +20,9 @@
     "dev": "node src/server.mjs",
     "start": "NODE_ENV=production node src/server.mjs",
     "check": "node --check src/server.mjs && node --check public/app.js && node --check src/core.mjs",
-    "test": "node --test"
+    "test": "node --test",
+    "build:showcase": "node scripts/build-showcase.mjs",
+    "refresh-snapshot": "node scripts/refresh-snapshot.mjs"
   },
   "engines": {
     "node": ">=20"

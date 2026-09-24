@@ -3098,7 +3098,7 @@ async function handleApi(req, res, pathname) {
 
 function verifyAlchemySignature(req, rawBody) {
   const signingKey = process.env.ALCHEMY_SIGNING_KEY;
-  if (!signingKey) return true;
+  if (!signingKey) return false;
   const header = req.headers["x-alchemy-signature"] || req.headers["x-webhook-signature"] || "";
   if (!header) return false;
   const expected = crypto.createHmac("sha256", signingKey).update(rawBody).digest("hex");
@@ -3106,7 +3106,7 @@ function verifyAlchemySignature(req, rawBody) {
 }
 
 function verifySharedSecret(req, secret) {
-  if (!secret) return true;
+  if (!secret) return false;
   const header = req.headers["x-signature"] || req.headers["x-moralis-signature"] || req.headers.authorization || "";
   const normalized = String(header).replace(/^Bearer\s+/i, "");
   return timingSafeEqual(normalized, secret);

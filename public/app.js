@@ -3,19 +3,20 @@ const state = {
   currentView: "overview",
   exchangeFilter: "all"
 };
+let staticSnapshot;
 
 const copy = {
   zh: {
     nav: { overview: "总览", web3news: "Web3大事件", regulation: "监管动态", unlocks: "解锁日历", daily: "运营日报", campaigns: "活动库", watchlist: "监控列表", exchanges: "竞品情报", events: "事件流", pipeline: "处理链路", settings: "设置" },
     titles: {
       overview: ["总览", "信号、评分和数据源状态。"],
-      web3news: ["Web3大事件", "每天自动汇总最重要的20条 Web3 新闻。"],
+      web3news: ["Web3大事件", "汇总已核验的信息源与重点事件。"],
       regulation: ["监管动态", "按地区跟踪 SEC、SFC、MAS、FCA 等监管与执法变化。"],
       unlocks: ["解锁日历", "跟踪未来30天大额代币解锁和运营关注点。"],
-      daily: ["运营日报", "10分钟完成市场概况、20所动态和今日关注。"],
+      daily: ["运营日报", "根据已收录信息生成可核验的运营简报。"],
       campaigns: ["活动情报库", "交易赛、充值赛、Launchpool 与新手任务归档。"],
       watchlist: ["监控状态", "当前运营监控范围、连接器和关键词订阅状态。"],
-      exchanges: ["竞品情报", "20所公告分类、关键词命中和上币竞速。"],
+      exchanges: ["竞品情报", "聚合多交易所公告、规则分类与公告时间对比。"],
       events: ["事件流", "进入告警判断前的标准化事实。"],
       pipeline: ["处理链路", "真实数据同步、回调和手动事件入口。"],
       settings: ["设置", "设置我的交易所，用于竞速、活动频次和日报对标。"]
@@ -47,7 +48,7 @@ const copy = {
       manual: "手动写入事件",
       ingestJson: "写入事件数据"
     },
-    daily: { heading: "运营晨报", generate: "生成晨报", weekly: "生成周报", copy: "复制", empty: "点击生成晨报，自动汇总过去24小时市场、20所动态和链上异动。" },
+    daily: { heading: "运营晨报", generate: "生成晨报", weekly: "生成周报", copy: "复制", empty: "根据已收录记录查看运营简报。" },
     web3news: { heading: "今日 Web3 大事件", empty: "暂无今日 Web3 新闻，点击刷新大事件获取最新内容。" },
     regulation: { heading: "监管动态雷达", empty: "暂无监管动态。同步新闻、公告或手动写入 SEC 诉讼等事件后会出现在这里。" },
     unlocks: { heading: "解锁日历", empty: "暂无未来30天解锁数据。数据源不可用时会自动降级为空状态。", week: "未来7天解锁分布" },
@@ -146,6 +147,12 @@ function t() {
 }
 
 async function load() {
+  if (window.SITES_STATIC) {
+    staticSnapshot = await (await fetch('/production-snapshot.json')).json();
+    state.data = staticSnapshot.state;
+    render();
+    return;
+  }
   const response = await fetch("/api/state");
   state.data = await response.json();
   render();
@@ -231,8 +238,7 @@ async function generateDailyReport() {
   button.disabled = true;
   button.textContent = t().buttons.syncing;
   try {
-    const response = await fetch(`/api/daily-report?lang=${lang()}`);
-    const payload = await response.json();
+    const payload = window.SITES_STATIC ? staticSnapshot.report : await (await fetch(`/api/daily-report?lang=${lang()}`)).json();
     document.getElementById("daily-report-preview").textContent = payload.report;
   } finally {
     button.disabled = false;
@@ -311,8 +317,11 @@ async function globalSearch(event) {
     panel.innerHTML = "";
     return;
   }
-  const response = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
-  const payload = await response.json();
+  const payload = window.SITES_STATIC ? { groups: Object.fromEntries([
+    ["announcements", state.data.exchangeAnnouncements || []],
+    ["campaigns", state.data.campaigns || []],
+    ["events", state.data.events || []]
+  ].map(([kind, records]) => [kind, records.filter((item) => `${item.title || ""} ${item.originalTitle || ""} ${item.exchange || item.source || ""}`.toLowerCase().includes(q.toLowerCase())).slice(0, 50).map((item) => ({ kind, title: item.title, source: item.exchange || item.source, url: item.url, observedAt: item.publishedAt || item.observedAt, summary: item.opsCategory ? `规则分类：${item.opsCategory}。请打开原文核验。` : "" }))])) } : await (await fetch(`/api/search?q=${encodeURIComponent(q)}`)).json();
   renderSearchResults(payload.groups || {});
 }
 
@@ -400,6 +409,9 @@ function updateStaticText() {
   document.getElementById("watchlist-form").querySelector("button[type=submit]").hidden = mode === "snapshot";
   document.getElementById("settings-form").querySelector("button[type=submit]").hidden = mode === "snapshot";
   document.getElementById("manual-form").hidden = mode === "snapshot";
+  for (const view of ["watchlist", "events", "pipeline", "settings"]) {
+    document.querySelector(`.nav-item[data-view="${view}"]`).hidden = mode === "snapshot";
+  }
   document.getElementById("copy-report-btn").textContent = text.daily.copy;
   document.getElementById("campaigns-heading").textContent = text.campaigns.heading;
   ["campaign-th-exchange", "campaign-th-type", "campaign-th-token", "campaign-th-time", "campaign-th-title"].forEach((id, index) => {
@@ -421,12 +433,12 @@ function renderMetrics() {
   const announcements = state.data.exchangeAnnouncements || [];
   const campaigns = state.data.campaigns || [];
   const sources = new Set(announcements.map((item) => item.exchangeId).filter(Boolean));
-  const dates = announcements.map((item) => item.publishedAt).filter(Boolean).sort();
+  const structured = campaigns.filter((item) => item.structured === 1 || item.structured === true).length;
   const cards = [
     ["已收录公告", announcements.length, "可检索的交易所记录"],
     ["有记录的交易所", sources.size, "按当前快照统计"],
-    ["结构化活动", campaigns.length, "从收录公告提取"],
-    ["最早公告日期", dates.length ? dates[0].slice(0, 10) : "—", "已收录范围"]
+    ["活动记录", campaigns.length, "从收录公告提取"],
+    ["已结构化活动", structured, "活动记录中已识别类型"]
   ];
   document.getElementById("metrics").innerHTML = cards
     .map(([label, value, detail]) => `<article class="metric"><span>${label}</span><strong>${escapeHtml(value)}</strong><small>${detail}</small></article>`)
@@ -622,7 +634,7 @@ function renderWhaleTransfers() {
       </article>
     `
       )
-      .join("") || `<p class="empty">${t().noWhales}</p>`;
+      .join("") || `<p class="empty">${state.data.dataMode === "snapshot" ? "本次快照未收录链上转账事件。" : t().noWhales}</p>`;
 }
 
 function renderCampaigns() {

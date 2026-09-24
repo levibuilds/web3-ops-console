@@ -1,76 +1,22 @@
 # Deployment
 
-This app is a single Node service with SQLite storage in `data/app.db`.
+## Showcase Deployment
 
-## Docker
+The public portfolio uses **Sites** and the validated [Production Snapshot](./public/production-snapshot.json). It is a static, read-only application: no VPS, SQLite writer, model key, webhook, notification, or automatic collection is needed. The built output comes from `npm run build:showcase`; `.openai/hosting.json` identifies the existing Site. The public portfolio version does not require operational deployment.
 
-```bash
-docker build -t web3-info-monitor-agent .
-docker run --rm -p 4173:4173 -v web3-agent-data:/app/data --env-file .env web3-info-monitor-agent
-```
+To refresh data on demand, run `npm run refresh-snapshot` locally or use the manual **Refresh operational snapshot** GitHub Action. The Action has no schedule. If its push is blocked by repository policy, download the uploaded validated snapshot artifact and review it before committing. A failed refresh preserves the prior file.
 
-Open:
+## Operational Deployment
 
-```text
-http://localhost:4173
-```
+The full Node service uses SQLite in `data/app.db`, optional provider keys, and signed webhooks. Use it only when a persistent operational backend is needed. Without keys, operational mode starts without external-source records. Demonstration records require explicit `DEMO_MODE=1` and a separate data directory. Webhooks remain disabled until their secrets are configured.
 
-## Railway
-
-1. Push the repository to GitHub.
-2. Create a new Railway project from the GitHub repo.
-3. Add a persistent volume mounted at `/app/data`.
-4. Add environment variables from `.env.example`.
-5. Set the start command to:
+### Docker
 
 ```bash
-npm start
+docker build -t web3-ops-console .
+docker run --rm -p 4173:4173 -e HOST=0.0.0.0 -v web3-ops-data:/app/data --env-file .env web3-ops-console
 ```
 
-6. Expose port `4173`.
+### Railway / Fly
 
-## Fly.io
-
-1. Install and sign in:
-
-```bash
-fly auth login
-```
-
-2. Launch from the repository:
-
-```bash
-fly launch
-```
-
-3. Create a volume for SQLite:
-
-```bash
-fly volumes create web3_agent_data --size 1
-```
-
-4. In `fly.toml`, mount the volume:
-
-```toml
-[mounts]
-  source = "web3_agent_data"
-  destination = "/app/data"
-```
-
-5. Set secrets:
-
-```bash
-fly secrets set COINGECKO_API_KEY=... X_BEARER_TOKEN=... ETHERSCAN_API_KEY=...
-```
-
-6. Deploy:
-
-```bash
-fly deploy
-```
-
-## Notes
-
-- SQLite must live on a persistent volume in production.
-- Without API keys, the app clearly displays demo mode.
-- Data is for research only and does not constitute investment advice.
+Set `HOST=0.0.0.0`, use a persistent volume for `/app/data`, and configure keys and webhook secrets through the host's controlled environment settings. Start with `npm start` and expose the configured port. SQLite data must survive container restarts. Do not expose the write API without its own access controls; the public Sites version contains no operational API.

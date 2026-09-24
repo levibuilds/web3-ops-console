@@ -1,6 +1,6 @@
 # Web3 Ops Console 源码与验证审计（2026-09-24）
 
-> 这是早期演示模式的审计记录；当前公开快照与发布验收以 [ACCEPTANCE.md](./ACCEPTANCE.md) 为准。
+> 这是早期演示模式的审计记录；当前公开快照与发布验收以 [ACCEPTANCE.md](../ACCEPTANCE.md) 为准。
 
 - 仓库：`levibuilds/web3-ops-console`；本轮基线 HEAD：`e4d5eb3db6e59e7f2b08e69af89593dbabe37c51`，分支 `main`。
 - 对象：交易所与 Web3 运营人员；问题是竞品公告、活动记录与日报分散在多处，难以核验和检索。

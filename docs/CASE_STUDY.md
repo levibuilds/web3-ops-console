@@ -18,7 +18,7 @@ Collect → Normalize → Classify → Search / Compare → Analyze → Operatio
 
 ## Verified data
 
-2026-09-23 22:40 UTC 的 [Operational Snapshot](../public/production-snapshot.json) 收录了 4 个交易所来源的 34 条去重公告和 20 条结构化活动。Binance 20、Bitget 10、Bybit 3、OKX 1。来源记录保留原始标题、来源 URL、发布时间与抓取时间。OKX 链接到公告列表页，其余三个来源提供文章链接。
+2026-09-23 22:40 UTC 的 [Operational Snapshot](../public/production-snapshot.json) 收录了 4 个交易所来源的 34 条去重公告和 20 条活动记录，其中 17 条完成结构化识别。Binance 20、Bitget 10、Bybit 3、OKX 1。来源记录保留原始标题、来源 URL、发布时间与抓取时间。OKX 链接到公告列表页，其余三个来源提供文章链接。
 
 源码另配置 20 个来源；配置数量不等于已验证采集数量。首页不宣称实时更新，快照模式也不会重新采集或发送通知。
 

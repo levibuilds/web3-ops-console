@@ -1,0 +1,34 @@
+name: Refresh operational snapshot
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run refresh-snapshot
+      - uses: actions/upload-artifact@v4
+        with:
+          name: validated-operational-snapshot
+          path: public/production-snapshot.json
+      - name: Commit only when snapshot changed
+        run: |
+          if git diff --quiet -- public/production-snapshot.json README.md README.zh.md; then
+            echo 'Snapshot unchanged; no commit.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/production-snapshot.json README.md README.zh.md
+          git commit -m 'data: refresh operational snapshot'
+          git push origin HEAD:main

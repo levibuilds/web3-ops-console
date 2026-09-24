@@ -1,6 +1,6 @@
 # Web3 Ops Console 求职展示版：本地交付记录
 
-> 本文记录 GitHub 发布前的本地交付状态；发布验收以 [ACCEPTANCE.md](./ACCEPTANCE.md) 为准。
+> 本文记录 GitHub 发布前的本地交付状态；发布验收以 [ACCEPTANCE.md](../ACCEPTANCE.md) 为准。
 
 日期：2026-09-24（Asia/Bangkok）
 
@@ -22,7 +22,7 @@
 
 ## 数据证据
 
-快照文件：[../public/production-snapshot.json](../public/production-snapshot.json)
+快照文件：[../public/production-snapshot.json](../../public/production-snapshot.json)
 
 采集时间：`2026-09-23T22:40:29.339Z`（曼谷时间 2026-09-24 05:40）。本轮使用原工程的 Binance、Bybit、Bitget 公告 API 与 OKX 带日期的公告列表，保留原始标题、来源 URL、发布时间和抓取时间。快照展示 34 条去重公告：Binance 20、Bitget 10、Bybit 3、OKX 1；从这些公告整理出 20 条活动。
 
@@ -47,15 +47,15 @@
 
 ## 实际页面截图
 
-- [1440 Overview](./screenshots/overview-viewport-1440.png)
-- [Intelligence](./screenshots/intelligence-production-1440.png)
-- [Campaigns](./screenshots/campaigns-production-1440.png)
-- [Reports](./screenshots/reports-production-1440.png)
-- [Search](./screenshots/search-production-1440.png)
-- [390 Mobile](./screenshots/overview-production-390.png)
-- [Levi Labs 三产品](./screenshots/levi-three-products-1440.png)
-- [案例页](./screenshots/levi-ops-case-1440.png)
-- [Bot 未配置时的真实状态](./screenshots/levi-bot-ops-status-1440.png)
+- [1440 Overview](../screenshots/overview-viewport-1440.png)
+- [Intelligence](../screenshots/intelligence-production-1440.png)
+- [Campaigns](../screenshots/campaigns-production-1440.png)
+- [Reports](../screenshots/reports-production-1440.png)
+- [Search](../screenshots/search-production-1440.png)
+- [390 Mobile](../screenshots/overview-production-390.png)
+- [Levi Labs 三产品](../screenshots/levi-three-products-1440.png)
+- [案例页](../screenshots/levi-ops-case-1440.png)
+- [Bot 未配置时的真实状态](../screenshots/levi-bot-ops-status-1440.png)
 
 ## 尚缺资源与后续
 

@@ -8,7 +8,8 @@
       "okx"
     ],
     "announcement_count": 34,
-    "campaign_count": 20
+    "campaign_count": 20,
+    "structured_campaign_count": 17
   },
   "state": {
     "dataMode": "snapshot",
@@ -2331,7 +2332,7 @@
       {
         "name": "Alchemy Notify",
         "status": "unverified",
-        "mode": "simulated",
+        "mode": "not_configured",
         "message": "",
         "checkedAt": "",
         "docs": "https://www.alchemy.com/docs/reference/notify-api-quickstart"
@@ -2339,7 +2340,7 @@
       {
         "name": "Moralis Streams",
         "status": "unverified",
-        "mode": "simulated",
+        "mode": "not_configured",
         "message": "",
         "checkedAt": "",
         "docs": ""
@@ -2347,7 +2348,7 @@
       {
         "name": "CoinGecko",
         "status": "unverified",
-        "mode": "public_api",
+        "mode": "not_configured",
         "message": "",
         "checkedAt": "",
         "docs": "https://docs.coingecko.com/reference/simple-price"
@@ -2355,7 +2356,7 @@
       {
         "name": "CryptoPanic",
         "status": "unverified",
-        "mode": "needs_key",
+        "mode": "not_configured",
         "message": "",
         "checkedAt": "",
         "docs": "https://cryptopanic.com/developers/api/about"
@@ -2363,7 +2364,7 @@
       {
         "name": "DefiLlama",
         "status": "unverified",
-        "mode": "public_api_ready",
+        "mode": "not_configured",
         "message": "",
         "checkedAt": "",
         "docs": "https://api-docs.defillama.com/"
@@ -2371,7 +2372,7 @@
       {
         "name": "X KOL",
         "status": "unverified",
-        "mode": "needs_key",
+        "mode": "not_configured",
         "message": "",
         "checkedAt": "",
         "docs": "https://docs.x.com/x-api/posts/search-recent-posts"
@@ -2379,7 +2380,7 @@
       {
         "name": "Etherscan Whales",
         "status": "unverified",
-        "mode": "needs_key",
+        "mode": "not_configured",
         "message": "",
         "checkedAt": "",
         "docs": "https://docs.etherscan.io/api-reference/endpoint/txlist"
@@ -2569,7 +2570,7 @@
     ]
   },
   "report": {
-    "report": "# Operations Brief / 运营情报简报\n\n快照采集时间：2026-09-23T22:40:29.339Z\n生成方式：规则汇总，未调用模型。公告分类需要核对原文。\n\n## Executive Summary\n\n已收录 34 条公告，来自 4 个有记录的交易所；结构化活动 20 条。\n\n## Important Listings\n\n- Bitget：Bitget 关于上线 URNMUSDT、WBDUSDT 热门股票永续合约的公告（2026-09-23）\n- Bitget：Bitget已上线POLYMARKET IPO盘前永续合约（2026-09-23）\n- Bitget：Bitget 关于上线 rGPRO、rHSAI、rBRZE、rALRM、rLCLN 等462只股票现货的公告（2026-09-23）\n- Bybit：Bybit Odds: View to Victory official product launch with a 17,000 USDT total prize pool!（2026-09-21）\n- OKX：欧易关于推迟 ONEUSDT 永续合约下线的公告（2026-09-18）\n\n## Exchange Campaigns\n\n- Binance：币安数字商城商家招募活动：入驻即享最高100 USDT奖励！（2026-09-23）\n- Bybit：Bybit City Edition 10: Transform your community activity into bigger, better rewards!（2026-09-22）\n- Binance：币安Alpha交易竞赛：交易AEON (AEON) ，分享20万美元等值奖励（2026-09-22）（2026-09-22）\n- Binance：BABY交易锦标赛：交易瓜分高达400 BNB奖池（2026-09-22）\n- Binance：币安Alpha交易竞赛：交易KiiChain (KII) ，分享10万美元等值奖励（2026-09-18）（2026-09-18）\n\n## Market Events\n\n- 本次快照未采集可核验的市场事件。\n\n## Competitive Moves\n\n- 按交易所和公告类别查看收录记录；数量仅代表本次采集范围。\n\n## Risks / Watchlist\n\n- 页面抓取来源未纳入本快照；公告时间以来源提供的发布时间为准。\n- 上币公告时间不等于开放交易时间。\n\n## Suggested Follow-ups\n\n- 打开公告原文，核对规则、日期及适用地区后再做运营决策。",
+    "report": "# Operations Brief / 运营情报简报\n\n快照采集时间：2026-09-23T22:40:29.339Z\n生成方式：规则汇总，未调用模型。公告分类需要核对原文。\n\n## Executive Summary\n\n已收录 34 条公告，来自 4 个有记录的交易所；活动记录 20 条，其中 17 条已结构化。\n\n## Important Listings\n\n- Bitget：Bitget 关于上线 URNMUSDT、WBDUSDT 热门股票永续合约的公告（2026-09-23）\n- Bitget：Bitget已上线POLYMARKET IPO盘前永续合约（2026-09-23）\n- Bitget：Bitget 关于上线 rGPRO、rHSAI、rBRZE、rALRM、rLCLN 等462只股票现货的公告（2026-09-23）\n- Bybit：Bybit Odds: View to Victory official product launch with a 17,000 USDT total prize pool!（2026-09-21）\n- OKX：欧易关于推迟 ONEUSDT 永续合约下线的公告（2026-09-18）\n\n## Exchange Campaigns\n\n- Binance：币安数字商城商家招募活动：入驻即享最高100 USDT奖励！（2026-09-23）\n- Bybit：Bybit City Edition 10: Transform your community activity into bigger, better rewards!（2026-09-22）\n- Binance：币安Alpha交易竞赛：交易AEON (AEON) ，分享20万美元等值奖励（2026-09-22）（2026-09-22）\n- Binance：BABY交易锦标赛：交易瓜分高达400 BNB奖池（2026-09-22）\n- Binance：币安Alpha交易竞赛：交易KiiChain (KII) ，分享10万美元等值奖励（2026-09-18）（2026-09-18）\n\n## Market Events\n\n- 本次快照未采集可核验的市场事件。\n\n## Competitive Moves\n\n- 按交易所和公告类别查看收录记录；数量仅代表本次采集范围。\n\n## Risks / Watchlist\n\n- 页面抓取来源未纳入本快照；公告时间以来源提供的发布时间为准。\n- 上币公告时间不等于开放交易时间。\n\n## Suggested Follow-ups\n\n- 打开公告原文，核对规则、日期及适用地区后再做运营决策。",
     "generatedAt": "2026-09-23T22:40:29.339Z",
     "language": "zh",
     "usedAi": false
