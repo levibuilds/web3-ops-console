@@ -1,3 +1,5 @@
+<img src="./assets/visual-kit/brand/wordmark.webp" alt="Web3 Ops Console" width="300">
+
 # Web3 Ops Console
 
 [中文文档](./README.zh.md) · [Case study](./docs/CASE_STUDY.md) · [Acceptance record](./docs/ACCEPTANCE.md)
@@ -10,6 +12,12 @@ Built as a functional product case that turns exchange operations experience int
 
 > Data is for operations research only and does not constitute investment advice.
 
+## Brand visual
+
+The image below is concept art from the [visual kit](./assets/visual-kit/README.md). Its illustrated interface and numbers are design references, not product data or an actual screenshot.
+
+![Web3 Ops Console brand hero concept](./assets/visual-kit/showcase/hero.webp)
+
 ## Product
 
 Exchange and Web3 operations teams work across fragmented competitor announcements, campaign updates, market events, and daily reports. The console brings these tasks into one operating surface.
@@ -18,15 +26,15 @@ Exchange and Web3 operations teams work across fragmented competitor announcemen
 Collect -> Normalize -> Classify -> Search -> Analyze -> Brief
 ```
 
-## Screenshots
+## Actual product screenshots
 
 Actual local product screens using the verified public-data snapshot captured on 2026-09-24:
 
 | Overview | Intelligence | Reports | Search | Mobile |
 | --- | --- | --- | --- | --- |
-| [Open](./docs/screenshots/overview-viewport-1440.png) | [Open](./docs/screenshots/intelligence-production-1440.png) | [Open](./docs/screenshots/reports-production-1440.png) | [Open](./docs/screenshots/search-production-1440.png) | [Open](./docs/screenshots/overview-production-390.png) |
+| [Open](./docs/screenshots/overview-visual-kit-1440.png) | [Open](./docs/screenshots/intelligence-production-1440.png) | [Open](./docs/screenshots/reports-production-1440.png) | [Open](./docs/screenshots/search-production-1440.png) | [Open](./docs/screenshots/overview-visual-kit-390.png) |
 
-![Web3 Ops Console overview](./docs/screenshots/overview-viewport-1440.png)
+![Web3 Ops Console actual overview with visual kit](./docs/screenshots/overview-visual-kit-1440.png)
 
 <!-- SNAPSHOT_COUNTS_START -->
 The current [production snapshot](./public/production-snapshot.json) contains **34 announcements from 4 verified exchange sources, 20 campaign records, 17 structured**; collected at 2026-09-23 22:40 UTC.

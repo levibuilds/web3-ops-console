@@ -1,4 +1,12 @@
+<img src="../assets/visual-kit/brand/wordmark.webp" alt="Web3 Ops Console" width="300">
+
 # Web3 Ops Console · Product Case Study
+
+## Brand hero · concept visual
+
+下图仅用于呈现品牌方向；图中的示意界面与指标不是实际运行数据或截图。
+
+![Web3 Ops Console 品牌概念视觉](../assets/visual-kit/showcase/hero.webp)
 
 ## Problem
 
@@ -8,7 +16,7 @@
 
 Web3 Ops Console 将公开公告收录、规则分类、活动整理、关键词检索、交易所对比和运营简报放在一个工作台。它展示的是交易所运营工作流的产品化实现，不是客户数或商业成果证明。
 
-![实际运行的 Overview](./screenshots/overview-viewport-1440.png)
+![接入视觉套件后实际运行的 Overview](./screenshots/overview-visual-kit-1440.png)
 
 ## Workflow
 
@@ -32,12 +40,22 @@ Collect → Normalize → Classify → Search / Compare → Analyze → Operatio
 
 ## Product screens
 
-- [Overview](./screenshots/overview-viewport-1440.png)
+以下链接为实际运行截图，与上方品牌概念视觉区分。
+
+- [Overview](./screenshots/overview-visual-kit-1440.png)
 - [Intelligence](./screenshots/intelligence-production-1440.png)
 - [Campaigns](./screenshots/campaigns-production-1440.png)
 - [Reports](./screenshots/reports-production-1440.png)
 - [Search](./screenshots/search-production-1440.png)
-- [Mobile](./screenshots/overview-production-390.png)
+- [Mobile](./screenshots/overview-visual-kit-390.png)
+
+## Design system · concept references
+
+以下视觉参考板用于指导 Deep Graphite 背景、Icy Cyan 强调色、面板、侧栏、按钮与移动布局；它们不是实际产品截图，其中的示意数字不代表已验证数据。
+
+![Web3 Ops Console UI kit concept board](../assets/visual-kit/showcase/ui-kit-board.webp)
+
+[查看站点设计方向参考](../assets/visual-kit/showcase/site-preview.webp)
 
 ## Status and limits
 

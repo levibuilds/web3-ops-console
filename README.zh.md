@@ -1,3 +1,5 @@
+<img src="./assets/visual-kit/brand/wordmark.webp" alt="Web3 Ops Console 交易所运营工作台" width="300">
+
 # Web3 Ops Console · 交易所运营工作台
 
 [English](./README.md) · [案例说明](./docs/CASE_STUDY.md) · [验收记录](./docs/ACCEPTANCE.md)
@@ -8,17 +10,23 @@
 
 > 数据仅供运营研究，不构成投资建议。项目没有可核实的客户数、用户数或商业效果数据。
 
+## Brand Visual / 品牌概念视觉
+
+下图来自[视觉套件](./assets/visual-kit/README.md)，仅展示设计方向。图中的界面和数字不是产品数据，也不是实际运行截图。
+
+![Web3 Ops Console 品牌概念 Hero](./assets/visual-kit/showcase/hero.webp)
+
 ## Screenshots / 实际界面
 
-以下截图来自本地实际运行的只读公开数据快照。概念视觉与产品截图分开管理；当前仓库没有用户先前提到的品牌资源包。
+以下截图来自本地实际运行的只读公开数据快照，与上方品牌概念视觉分开。
 
 | Overview | Intelligence | Reports | Search |
 | --- | --- | --- | --- |
-| [查看](./docs/screenshots/overview-viewport-1440.png) | [查看](./docs/screenshots/intelligence-production-1440.png) | [查看](./docs/screenshots/reports-production-1440.png) | [查看](./docs/screenshots/search-production-1440.png) |
+| [查看](./docs/screenshots/overview-visual-kit-1440.png) | [查看](./docs/screenshots/intelligence-production-1440.png) | [查看](./docs/screenshots/reports-production-1440.png) | [查看](./docs/screenshots/search-production-1440.png) |
 
-![Web3 Ops Console 实际运行的 Overview](./docs/screenshots/overview-viewport-1440.png)
+![Web3 Ops Console 接入视觉套件后的实际 Overview](./docs/screenshots/overview-visual-kit-1440.png)
 
-[活动库](./docs/screenshots/campaigns-production-1440.png) · [手机布局](./docs/screenshots/overview-production-390.png)
+[活动库](./docs/screenshots/campaigns-production-1440.png) · [手机布局](./docs/screenshots/overview-visual-kit-390.png)
 
 ## Why / 为什么做
 

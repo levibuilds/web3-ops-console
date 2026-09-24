@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Web3 Ops Console</title>
     <meta name="description" content="Web3 Ops Console 将交易所公告、活动情报、运营日报与检索集中到统一工作台。" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/assets/visual-kit/brand/app-icon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/assets/visual-kit/brand/app-icon-256.png" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <div class="shell">
       <aside class="sidebar">
         <div class="brand">
-          <div class="mark">W3</div>
+          <div class="mark"><img src="/assets/visual-kit/brand/emblem.webp" alt="" /></div>
           <div>
             <h1>Web3 Ops Console</h1>
             <p>交易所运营工作台</p>
@@ -20,19 +21,20 @@
         </div>
         <p class="nav-caption">WORKSPACE</p>
         <nav>
-          <button class="nav-item active" data-view="overview">总览</button>
-          <button class="nav-item" data-view="web3news">Web3大事件</button>
+          <button class="nav-item active" data-view="overview"><img class="module-icon" src="/assets/visual-kit/icons/analytics.webp" alt="" /><span class="nav-label">总览</span></button>
+          <button class="nav-item" data-view="web3news"><img class="module-icon" src="/assets/visual-kit/icons/knowledge.webp" alt="" /><span class="nav-label">Web3大事件</span></button>
           <button class="nav-item" data-view="regulation">监管动态</button>
           <button class="nav-item" data-view="unlocks">解锁日历</button>
-          <button class="nav-item" data-view="daily">运营日报</button>
-          <button class="nav-item" data-view="campaigns">活动库</button>
+          <button class="nav-item" data-view="daily"><img class="module-icon" src="/assets/visual-kit/icons/reports.webp" alt="" /><span class="nav-label">运营日报</span></button>
+          <button class="nav-item" data-view="campaigns"><img class="module-icon" src="/assets/visual-kit/icons/campaigns.webp" alt="" /><span class="nav-label">活动库</span></button>
           <button class="nav-item" data-view="watchlist">监控列表</button>
-          <button class="nav-item" data-view="exchanges">交易所活动</button>
+          <button class="nav-item" data-view="exchanges"><img class="module-icon" src="/assets/visual-kit/icons/exchanges.webp" alt="" /><span class="nav-label">交易所活动</span></button>
           <button class="nav-item" data-view="events">事件流</button>
           <button class="nav-item" data-view="pipeline">处理链路</button>
           <button class="nav-item" data-view="settings">设置</button>
         </nav>
         <div class="sidebar-foot">
+          <img class="footer-wordmark" src="/assets/visual-kit/brand/wordmark.webp" alt="Web3 Ops Console" loading="lazy" />
           <p class="nav-caption">DATA STATUS</p>
           <div class="connector-list" id="connectors"></div>
           <a href="https://github.com/levibuilds/web3-ops-console/blob/main/docs/CASE_STUDY.md" target="_blank" rel="noopener noreferrer">产品案例 ↗</a>
@@ -43,6 +45,7 @@
       <main>
         <section class="toolbar">
           <div>
+            <img class="header-wordmark" src="/assets/visual-kit/brand/wordmark.webp" alt="Web3 Ops Console" />
             <p class="toolbar-kicker">WEB3 OPS / COMMAND CENTER</p>
             <h2 id="view-title">总览</h2>
             <p id="view-subtitle">交易所运营情报与工作流中枢</p>
@@ -51,7 +54,7 @@
           <div class="actions">
             <form id="global-search-form" class="global-search">
               <input id="global-search-input" type="search" placeholder="搜索公告、活动、事件与日报…" aria-label="搜索公告、活动和事件" />
-              <button type="submit" class="secondary">搜索</button>
+              <button type="submit" class="secondary"><img class="module-icon" src="/assets/visual-kit/icons/search.webp" alt="" />搜索</button>
             </form>
             <span id="mode-badge" class="mode-badge">数据状态</span>
             <button id="refresh-btn" class="icon-btn" title="刷新">↻</button>
@@ -63,6 +66,7 @@
 
         <section class="view active" id="overview-view">
           <section class="overview-hero">
+            <div class="hero-art" aria-hidden="true"></div>
             <div class="hero-copy">
               <span class="hero-eyebrow">FROM DATA TO ACTION.</span>
               <h2>把分散的信息，<br /><em>变成下一步行动。</em></h2>
@@ -79,7 +83,7 @@
           <div class="metrics" id="metrics"></div>
           <div class="overview-grid">
             <section class="panel overview-feed">
-              <div class="panel-head"><div><span class="section-label">01 / INTELLIGENCE FEED</span><h3>最新情报</h3></div><button class="text-action" data-jump="exchanges">查看全部 ↗</button></div>
+              <div class="panel-head"><div><span class="section-label">01 / INTELLIGENCE FEED</span><h3><img class="module-icon" src="/assets/visual-kit/icons/intelligence.webp" alt="" />最新情报</h3></div><button class="text-action" data-jump="exchanges">查看全部 ↗</button></div>
               <div id="overview-feed"></div>
             </section>
             <section class="panel overview-radar">

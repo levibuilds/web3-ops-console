@@ -423,7 +423,9 @@ function updateStaticText() {
     document.getElementById("daily-report-preview").textContent = mode === "snapshot" ? "点击查看基于已收录公告生成的规则版快照简报。" : window.SITES_REVIEW ? "点击查看按演示数据生成的静态日报快照。" : text.daily.empty;
   }
   document.querySelectorAll(".nav-item").forEach((button) => {
-    button.textContent = text.nav[button.dataset.view];
+    const label = button.querySelector(".nav-label");
+    if (label) label.textContent = text.nav[button.dataset.view];
+    else button.textContent = text.nav[button.dataset.view];
   });
   document.getElementById("view-title").textContent = text.titles[state.currentView][0];
   document.getElementById("view-subtitle").textContent = state.currentView === "overview" ? "交易所运营情报与工作流中枢" : text.titles[state.currentView][1];
