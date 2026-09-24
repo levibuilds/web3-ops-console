@@ -22,11 +22,11 @@
 
 | Overview | Intelligence | Reports | Search |
 | --- | --- | --- | --- |
-| [查看](./docs/screenshots/overview-visual-kit-1440.png) | [查看](./docs/screenshots/intelligence-production-1440.png) | [查看](./docs/screenshots/reports-production-1440.png) | [查看](./docs/screenshots/search-production-1440.png) |
+| [查看](./docs/screenshots/visual-kit-overview-desktop.png) | [查看](./docs/screenshots/intelligence-production-1440.png) | [查看](./docs/screenshots/reports-production-1440.png) | [查看](./docs/screenshots/search-production-1440.png) |
 
-![Web3 Ops Console 接入视觉套件后的实际 Overview](./docs/screenshots/overview-visual-kit-1440.png)
+![Web3 Ops Console 接入视觉套件后的实际 Overview](./docs/screenshots/visual-kit-overview-desktop.png)
 
-[活动库](./docs/screenshots/campaigns-production-1440.png) · [手机布局](./docs/screenshots/overview-visual-kit-390.png)
+[活动库](./docs/screenshots/campaigns-production-1440.png) · [手机布局](./docs/screenshots/visual-kit-overview-mobile.png)
 
 ## Why / 为什么做
 

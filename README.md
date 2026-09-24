@@ -32,9 +32,9 @@ Actual local product screens using the verified public-data snapshot captured on
 
 | Overview | Intelligence | Reports | Search | Mobile |
 | --- | --- | --- | --- | --- |
-| [Open](./docs/screenshots/overview-visual-kit-1440.png) | [Open](./docs/screenshots/intelligence-production-1440.png) | [Open](./docs/screenshots/reports-production-1440.png) | [Open](./docs/screenshots/search-production-1440.png) | [Open](./docs/screenshots/overview-visual-kit-390.png) |
+| [Open](./docs/screenshots/visual-kit-overview-desktop.png) | [Open](./docs/screenshots/intelligence-production-1440.png) | [Open](./docs/screenshots/reports-production-1440.png) | [Open](./docs/screenshots/search-production-1440.png) | [Open](./docs/screenshots/visual-kit-overview-mobile.png) |
 
-![Web3 Ops Console actual overview with visual kit](./docs/screenshots/overview-visual-kit-1440.png)
+![Web3 Ops Console actual overview with visual kit](./docs/screenshots/visual-kit-overview-desktop.png)
 
 <!-- SNAPSHOT_COUNTS_START -->
 The current [production snapshot](./public/production-snapshot.json) contains **34 announcements from 4 verified exchange sources, 20 campaign records, 17 structured**; collected at 2026-09-23 22:40 UTC.
