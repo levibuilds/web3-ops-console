@@ -2,6 +2,8 @@
 
 [English](./README.md) · [案例说明](./docs/CASE_STUDY.md) · [验收记录](./docs/ACCEPTANCE.md)
 
+**Live Showcase / 公开展示：**[打开交易所运营工作台](https://web3-ops-console.levi3399.chatgpt.site)
+
 **From Data to Action.** 将交易所公告、活动情报、竞品动态、搜索和运营日报集中到统一工作流。这是一个基于交易所运营场景构建的可运行产品案例。
 
 > 数据仅供运营研究，不构成投资建议。项目没有可核实的客户数、用户数或商业效果数据。

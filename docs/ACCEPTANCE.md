@@ -1,86 +1,65 @@
-# Web3 Ops Console · GitHub 发布验收
+# Web3 Ops Console · Final Sites Release Acceptance
 
-验收日期：2026-09-24（Asia/Bangkok）。本文件记录实际执行结果。由于 Git commit 不能在自身内容中记录自身 SHA，下面的 SHA 是已验证的**代码提交**；包含本文件的最终 `main` SHA 以 GitHub `main` 和交付摘要为准。
-
-## Repository
-
-- GitHub URL: https://github.com/levibuilds/web3-ops-console
-- Visibility: **Public**（GitHub API 已核对）
-- 唯一远端：`origin` → `https://github.com/levibuilds/web3-ops-console.git`
-- 沿用已有仓库和历史，没有新建重复仓库，也没有强制推送。
-
-## Commit / Branch / Local path
-
-- 已验证代码提交：`3887fd89a6942eb7b6345eeb0d571573dd2cfdaf`
-- Branch / default branch: `main`
-- 本地工程：`/Users/levi/Downloads/交易所工作台/web3-ops-console`
-
-## Runtime / Commands
-
-- Node.js `v22.23.1`；npm `10.9.8`。
-- 已实际执行：`npm ci`、`npm run check`、`npm test`、`git diff --check`、Gitleaks 当前目录/暂存文件/历史扫描、GitHub API 与公开原始文件检查。
-- `package.json` 没有 `lint` script，因此无单独 lint 结果。
-- 已实际启动 `HOST=127.0.0.1 PORT=4178 SNAPSHOT_MODE=1 npm run dev`，本地入口：`http://127.0.0.1:4178/`。该本机地址不是公网部署。
-
-## Tests
-
-- `npm ci`：成功；39 个依赖包完成审计，npm 报告 0 vulnerabilities。
-- `npm run check`：通过。
-- `npm test`：**15 passed / 0 failed**。原先通知测试固定使用 4193 端口，与已运行的 Levi Labs 本地服务冲突；改为自动选择空闲端口后整套重跑通过。
-- GitHub Actions `CI`：代码提交 `3887fd8` 的工作流完成，结论 **success**。
-
-## Features checked
-
-| 项目 | 结果 | 证据 / 限制 |
-| --- | --- | --- |
-| Overview | PASS | 本地首页 HTTP 200，实际运行截图；显示来源数量、公告数量和快照时间。 |
-| Search | PASS | `/api/search` HTTP 200，浏览器搜索交互及截图已核对。 |
-| Reports | PASS | `/api/daily-report` HTTP 200；这是已保存记录的规则版快照简报，不是模型生成。 |
-| Data snapshot | PASS | `/api/state` HTTP 200，34 条公告、20 条活动记录（17 条已结构化），模式为 `snapshot`；同步 POST 返回 403。 |
-| Assets | PASS / 部分缺失 | 实际产品截图及临时 W3 favicon 可访问；指定品牌资源包的四张 PNG 本机未找到，正式 Logo 未验收。 |
-| README | PASS | 英文和中文 README 公开原始链接 HTTP 200，案例、截图相对路径可访问。 |
-| Mobile | PASS | 390/360 像素宽度浏览器布局已检查，无页面横向溢出；390 像素截图已保存。 |
-| API / static files | PASS | `/api/health`、`/api/campaigns`、`/app.js`、`/styles.css`、`/favicon.svg` 均 HTTP 200；快照写入被服务端拒绝。 |
-| Real model call | NOT TESTED | 无服务端模型凭证，本轮没有声称 Bot 或日报的真实模型调用通过。 |
-| Real notifications / continuous scheduler | NOT TESTED | 通知 mock 测试通过；快照模式禁止真实通知和自动采集。 |
-
-## Data
-
-- [公开快照](../public/production-snapshot.json)采集时间：`2026-09-23T22:40:29.339Z`（曼谷时间 2026-09-24 05:40）。
-- 来源：项目原有 Binance、Bitget、Bybit 公告 API，以及 OKX 带日期的公告列表页。去重后 Binance 20、Bitget 10、Bybit 3、OKX 1；从已收录公告整理 20 条活动记录，其中 17 条完成结构化识别。原始标题、来源 URL、发布时间、抓取时间保留在数据中。
-- 公开快照**不含 mock 记录**；单独的 [`site-demo-state.json`](./archive/site-demo-state.json) 是显式标注的演示样例，未作为本次 README 的真实数据证据。
-- 当前快照不会持续实时更新。源码配置 20 个交易所来源，不等于 20 个已验证成功采集。通用网页抓取和新闻兜底结果因识别/时间问题没有进入公开快照。
-
-## Security
-
-- `.env` 不存在且受 `.gitignore` 排除；本地 SQLite `data/`、日志、缓存、`node_modules/` 未提交。公开的是经检查的 JSON 快照，不是整个数据库。
-- Gitleaks 对当前工作区和暂存内容均为 **0 findings**；另对历史 Git blobs 与当前文件做了多类敏感模式扫描。
-- Gitleaks 历史扫描有 **1 个误报**：旧提交的 `.env.example` 中空的 `CRYPTOPANIC_API_KEY=` 与下一行 `DEFILLAMA_ENABLED=true` 被跨行识别为 generic API key；并无密钥值。当前 `.env.example` 已调整，历史未改写。未发现真实 API key、token、私钥、seed phrase 或私人 webhook。
-- 截图经人工查看为公开产品界面；没有把概念视觉标成真实运行截图。
+日期：2026-09-24（Asia/Bangkok）。本文件记录本轮实际验证结果。Git commit 无法在自己的内容中记录自身 SHA；下方为经验证的实现提交，包含本文件的最终提交 SHA 请以 GitHub `main` 为准。
 
 ## GitHub
 
-- 仓库： https://github.com/levibuilds/web3-ops-console
-- 账号身份：`levibuilds`；具备 push 权限。
-- `main` 为默认分支；仓库为 Public。
-- 代码提交 `3887fd89a6942eb7b6345eeb0d571573dd2cfdaf` 已实际推送并由 GitHub API 核对；GitHub `pushed_at` 为 `2026-09-23T23:33:47Z`。本验收文件的后续文档提交会形成新的最终 SHA。
-- Description：`A Web3 exchange operations intelligence console for announcements, campaigns, market signals and operations briefs.`
-- Topics：`ai`、`crypto`、`dashboard`、`exchange`、`intelligence`、`operations`、`product`、`web3`。
-- README 中文入口和公开截图原始 URL 均已检查，返回 HTTP 200。`package.json` repository 指向本仓库。
+- Repository: https://github.com/levibuilds/web3-ops-console
+- Branch / default branch: `main`
+- Verified implementation commit: `d169b0978382e5c432ea20b037cb12bbc43d3ecf`
+- Visibility: Public；沿用现有仓库与历史，没有新建第二个仓库或强制推送。
+- Local path: `/Users/levi/Downloads/交易所工作台/web3-ops-console`
+
+## Snapshot
+
+- File: [public/production-snapshot.json](../public/production-snapshot.json)
+- Collected: `2026-09-23T22:40:29.339Z`（曼谷时间 2026-09-24 05:40）
+- Announcements: **34**；verified exchange sources: **4**（Binance 20、Bitget 10、Bybit 3、OKX 1）
+- Campaign records: **20**；structured campaign records: **17**
+- Public snapshot contains no demo records. Archived demo fixtures live only in [docs/archive](./archive/README.md).
+- Collection: **on demand only**. Static Sites does not collect automatically. `npm run refresh-snapshot` and the manual GitHub Action provide a validated refresh path; no cron schedule is configured.
+
+## Security
+
+- The Node `SNAPSHOT_MODE=1` API rejects all non-GET requests and `?push` GET requests with HTTP 403. Sites deploys static assets only, with no write API or SQLite writer.
+- Alchemy and Moralis webhooks reject requests without a configured secret; valid and invalid signatures are covered by integration tests. `No secret = webhook disabled`.
+- `.env`, local SQLite, logs and `node_modules` are excluded from Git. Gitleaks current/staged scan: **0 findings**. Historical scan's one finding is a documented false positive across an empty example key and a boolean setting; no real secret was identified.
+- The Sites bundle contains only `index.html`, browser JS/CSS, favicon, snapshot JSON and hosting metadata. No model or notification credentials are required.
+- Unauthenticated requests to the published Sites URL returned HTTP 403 for `/api/sync`, `/api/settings`, `/api/ingest`, `/api/webhooks/alchemy`, and `/api/daily-report?push=1`.
+
+## AI / Notifications
+
+- OpenAI remains optional in the full Node service; the public snapshot and rules brief do not call a model. **DeepSeek is not used.** Real model call: **NOT TESTED** (no server credential configured).
+- Feishu and WeCom mock notification test: **PASS**. Real notification delivery: **NOT TESTED**. Sites cannot send notifications.
+
+## Tests and interaction checks
+
+- Node `v22.23.1`, npm `10.9.8`.
+- `npm ci`: success, npm reported 0 vulnerabilities. `npm run check`: PASS. `npm test`: **19 passed / 0 failed**. `npm run build:showcase`: PASS. `git diff --check`: PASS. No `lint` script exists.
+- GitHub Actions CI for implementation commit `d169b09`: **success**. GitHub repository Homepage metadata was updated to the Sites URL.
+- Published Sites and local static showcase: Overview 34/4/20/17 from JSON; Campaign Radar filter for Binance returned 18 linked records locally; published keyword search for “Binance” returned 17 results; published saved rules brief opened; published mobile width 390 px had no page overflow.
+- Browser loaded `/styles.css`, `/app.js`, and `/production-snapshot.json` only; it did not call the operational `/api/*` endpoints.
+
+## Sites
+
+- Existing Sites project reused: `appgprj_6ab45252471881919a13b36a9ce430f2`. Project title and slug updated to Web3 Ops Console.
+- URL: https://web3-ops-console.levi3399.chatgpt.site
+- Publish status: **PUBLISHED**；Sites deployment `appgdep_6ab46bda4f388191bd3c663d1b4a3fc8` returned `succeeded` with this URL
+- Public access: **PASS**；Sites access mode is `public`
+- Anonymous access checked: **PASS (unauthenticated HTTP)**；without cookies or Authorization, public homepage, JSON, JavaScript, CSS, and favicon returned HTTP 200. A separate private-browser session was not available.
+- The public version is a static read-only snapshot application. It requires no VPS, running laptop, SQLite persistence, model key, webhook, or scheduled collector.
 
 ## Screenshots
 
-- [Overview desktop](./screenshots/overview-viewport-1440.png)
-- [Intelligence](./screenshots/intelligence-production-1440.png)
-- [Campaigns](./screenshots/campaigns-production-1440.png)
-- [Reports](./screenshots/reports-production-1440.png)
-- [Search](./screenshots/search-production-1440.png)
-- [Overview mobile](./screenshots/overview-production-390.png)
-- [Levi Labs 案例入口](./screenshots/levi-ops-case-1440.png)
+The following four screenshots were taken from the published Sites URL.
 
-## Remaining Issues
+- [Sites Overview desktop](./screenshots/sites-public-overview-desktop.png)
+- [Sites Overview mobile](./screenshots/sites-public-overview-mobile.png)
+- [Sites Search](./screenshots/sites-public-search.png)
+- [Sites Reports](./screenshots/sites-public-reports.png)
 
-- 用户之前提供的视觉资源包在当前机器未找到，因此真实品牌 Logo、emblem、icon pack、hero concept 尚未入库；当前 W3 图标是临时占位。
-- 此次完成 GitHub 源码发布，**未完成 Sites 或其他公网服务部署**。本机运行地址不能用于远程访问。
-- 真实模型问答、真实通知投递、持续调度和全部 20 个配置来源的稳定采集未通过本轮验收；不能据此宣称 24/7 实时运行。
-- 旧版 [演示模式审计](./archive/web3-ops-console-audit.md) 与 [本地展示记录](./archive/job-showcase-report.md) 是历史过程文件；当前公开状态以本文件及主分支代码为准。
+## Remaining issues
+
+- Requested brand PNG assets were not present in the workspace; the existing W3 favicon remains a placeholder. Actual product screenshots are used instead.
+- All 20 configured exchanges are not verified data sources. The current published snapshot has four verified sources; other sources and connectors are not represented as live.
+- Live model calls, real notifications, and continuous collection were not tested or enabled for the public version.

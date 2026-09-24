@@ -2,6 +2,8 @@
 
 [中文文档](./README.zh.md) · [Case study](./docs/CASE_STUDY.md) · [Acceptance record](./docs/ACCEPTANCE.md)
 
+**Live Showcase:** [Open Web3 Ops Console](https://web3-ops-console.levi3399.chatgpt.site)
+
 **From Data to Action.** An exchange operations workspace for collecting announcements, classifying campaigns, comparing sources, searching records, and drafting operations briefs.
 
 Built as a functional product case that turns exchange operations experience into a browsable workflow. Contact: [@levibuilds](https://github.com/levibuilds).
